@@ -1,9 +1,8 @@
 # React & TailwindCSS Portfolio 
 
-@Jonas-sebera
+@0xJonaseb11
 
 A simple portfolio starter theme built with React and Tailwind CSS. 
-
 
 ## Features
 
@@ -24,6 +23,6 @@ A simple portfolio starter theme built with React and Tailwind CSS.
 -   Download file button
 -   Simple and responsive design
 
+------------
 
-@Jonas-sebera
-
+@0xJonaseb11
