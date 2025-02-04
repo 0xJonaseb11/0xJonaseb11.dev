@@ -1,0 +1,14 @@
+# compiler files
+cache
+out
+build
+dist
+
+# node_modules
+node_modules
+
+# .env
+.env
+
+# smart_contract
+smart_contract/
