@@ -1,9 +1,10 @@
-/* @import url("https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple"); */
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+/* Premium Font: Poppins - Modern, geometric, and friendly - perfect for creative portfolios */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 body {
-  font-family: "GeneralSans-Variable";
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Fonts */
@@ -18,7 +19,7 @@ body {
 }
 
 .font-general-variable {
-  font-family: "GeneralSans-Variable";
+  font-family: "Poppins", sans-serif;
 }
 
 @font-face {
@@ -102,7 +103,8 @@ body {
 }
 
 .font-general-regular {
-  font-family: "GeneralSans-Regular";
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 @font-face {
@@ -130,7 +132,8 @@ body {
 }
 
 .font-general-medium {
-  font-family: "GeneralSans-Medium";
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 @font-face {
@@ -158,7 +161,8 @@ body {
 }
 
 .font-general-semibold {
-  font-family: "GeneralSans-Semibold";
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
 
 @font-face {
@@ -186,7 +190,8 @@ body {
 }
 
 .font-general-bold {
-  font-family: "GeneralSans-Bold";
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
 }
 
 @font-face {

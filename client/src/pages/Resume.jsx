@@ -10,8 +10,8 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import transition_Web3 from "./certificates/Transition_To_Web3.png";
 import metaschool from "./certificates/metaschool.png";
 // import hyperledger from "./certificates/hyperledger.png";
-// import decentrlized-apps from "./certificates/decentralized-apps.png";
-// import blockchain-specialization from "./certificates/blockchain-specialization.png";
+// import decentralizedApps from "./certificates/decentralized-apps.png";
+// import blockchainSpecialization from "./certificates/blockchain-specialization.png";
 
 const Resume = () => {
   return (
@@ -132,6 +132,7 @@ const Resume = () => {
           }}
           className="mt-5"
         >
+          {/* Tarsier Safaris Ltd - Software Engineer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -140,25 +141,21 @@ const Resume = () => {
             <TimelineContent>
               <li className="timeline-item flex flex-col gap-1">
                 <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
-                  Frontend Developer At Italos
+                  Software Engineer at Tarsier Safaris Ltd
                 </h4>
 
                 <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
-                  2021 — 2023
+                  October 2025 — Present
                 </span>
 
-                <p className="timeline-text font-general-medium  text-primary-dark dark:text-ternary-light font-medium">
-                  At Italos, I worked as a frontend developer. My role involved
-                  creating and implementing user interface components and
-                  designing engaging and user-friendly web interfaces. I
-                  utilized various frontend technologies such as React and
-                  tailwindcss to build interactive and responsive websites. I
-                  collaborated with the design and development teams to ensure a
-                  seamless user experience. F{" "}
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  As a Software Engineer at Tarsier Safaris Ltd, I develop and maintain software solutions for the travel and tourism industry. I work on building scalable web applications, implementing modern development practices, and ensuring high-quality code delivery. My responsibilities include collaborating with cross-functional teams, designing system architectures, and developing features that enhance the user experience for travel services.
                 </p>
               </li>
             </TimelineContent>
           </TimelineItem>
+
+          {/* Web3 Mates - Senior Technical Support Engineer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -167,26 +164,21 @@ const Resume = () => {
             <TimelineContent>
               <li className="timeline-item flex flex-col gap-1">
                 <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
-                  Mid-Level Smart Contract Engineer
+                  Senior Technical Support Engineer at Web3 Mates
                 </h4>
 
                 <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
-                  2023 — 2023
+                  May 2025 — Present · 7 mos · Hybrid
                 </span>
 
-                <p className="timeline-text font-general-medium  text-primary-dark dark:text-ternary-light font-medium">
-                  At blockify, I was employed as a mid-level smart contract
-                  developer. In this role, I was responsible for developing and
-                  testing intermediary smart contracts to interact with clients
-                  and services provided by different Web site. I worked with a
-                  range of technologies, frameworks, and programming languages
-                  to build robust and scalable decentralized applications. I
-                  collaborated with cross-functional teams to design, develop,
-                  and deploy innovative software solutions.
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  I currently lead technical support for developers, guiding blockchain integrations, smart contract deployment, and troubleshooting. I streamline onboarding processes, resolve complex technical issues, and ensure seamless developer experiences. My role involves providing expert guidance on Web3 technologies, debugging smart contracts, and facilitating smooth blockchain integrations for our developer community.
                 </p>
               </li>
             </TimelineContent>
           </TimelineItem>
+
+          {/* Web3 Mates - Lead Blockchain Developer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -195,25 +187,21 @@ const Resume = () => {
             <TimelineContent>
               <li className="timeline-item flex flex-col gap-1">
                 <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
-                  Project Leader
+                  Lead Blockchain Developer at Web3 Mates
                 </h4>
 
                 <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
-                  2022 — Present
+                  May 2025 — Present · 7 mos
                 </span>
 
-                <p className="timeline-text font-general-medium  text-primary-dark dark:text-ternary-light font-medium">
-                  In my role as a project leader, I oversee and manage various
-                  software development projects. I coordinate with team members,
-                  set project goals and timelines, and ensure successful project
-                  execution. I am responsible for resource allocation, task
-                  delegation, and ensuring effective communication within the
-                  team. I monitor project progress, mitigate risks, and ensure
-                  timely delivery of high-quality software solutions.
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  As Lead Blockchain Developer, I architect and develop decentralized applications and smart contract solutions. I lead a team of blockchain developers, set technical standards, and drive innovation in Web3 development. My responsibilities include designing scalable blockchain architectures, conducting code reviews, mentoring team members, and ensuring best practices in smart contract security and deployment.
                 </p>
               </li>
             </TimelineContent>
           </TimelineItem>
+
+          {/* Stone.proof Labs - CEO && Co-Founder */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -222,22 +210,83 @@ const Resume = () => {
             <TimelineContent>
               <li className="timeline-item flex flex-col gap-1">
                 <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
-                  Web Designer
+                  CEO & Co-Founder at Stone.proof Labs
                 </h4>
 
                 <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
-                  2018 — Present
+                  February 2025 — Present · 10 mos · Kigali, Rwanda · Hybrid
                 </span>
 
-                <p className="timeline-text font-general-medium  text-primary-dark dark:text-ternary-light font-medium">
-                  As a web designer, I am involved in creating visually
-                  appealing and intuitive website designs. I combine my
-                  knowledge of design principles, user experience, and frontend
-                  technologies to craft engaging web interfaces. I collaborate
-                  with clients and stakeholders to understand their requirements
-                  and translate them into visually stunning and functional
-                  websites. I also work closely with developers to ensure
-                  seamless implementation of the designs.
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  As CEO and Co-Founder of Stone.proof Labs, I lead strategic direction and operations for a blockchain-based mineral supply chain platform. I oversee business development, manage stakeholder relationships, and drive product innovation. My role involves setting company vision, building strategic partnerships, managing resources, and ensuring the company's mission of bringing transparency to mineral supply chains through blockchain technology.
+                </p>
+              </li>
+            </TimelineContent>
+          </TimelineItem>
+
+          {/* Stone.proof Labs - Lead Blockchain Developer */}
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <li className="timeline-item flex flex-col gap-1">
+                <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
+                  Lead Blockchain Developer at Stone.proof Labs
+                </h4>
+
+                <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
+                  February 2025 — Present · 10 mos
+                </span>
+
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  I lead the technical development of blockchain solutions for mineral supply chain traceability. I design and implement smart contracts, develop decentralized applications, and architect secure blockchain systems. My work focuses on creating immutable records for mineral tracking, ensuring data integrity, and building scalable solutions that bring transparency to supply chain operations.
+                </p>
+              </li>
+            </TimelineContent>
+          </TimelineItem>
+
+          {/* Blockify Technologies - Blockchain Developer */}
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <li className="timeline-item flex flex-col gap-1">
+                <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
+                  Blockchain Developer at Blockify Technologies
+                </h4>
+
+                <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
+                  August 2023 — December 2023 · 5 mos · Remote · Internship
+                </span>
+
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  During my internship at Blockify Technologies, I developed and tested smart contracts, working with various blockchain technologies and frameworks. I gained hands-on experience in building decentralized applications, writing secure smart contracts, and integrating blockchain solutions with web applications. This role provided me with foundational knowledge in Web3 development and smart contract best practices.
+                </p>
+              </li>
+            </TimelineContent>
+          </TimelineItem>
+
+          {/* Italos - Frontend Developer */}
+          <TimelineItem>
+            <TimelineSeparator>
+              <TimelineDot />
+            </TimelineSeparator>
+            <TimelineContent>
+              <li className="timeline-item flex flex-col gap-1">
+                <h4 className="h4 font-general-medium timeline-item-title text-lg text-primary-dark dark:text-ternary-light font-semibold">
+                  Frontend Developer at Italos
+                </h4>
+
+                <span className="text-lg text-blue-500 dark:text-blue-400 font-semibold font-general-medium">
+                  May 2023 — October 2023 · 6 mos · Remote · Freelance
+                </span>
+
+                <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
+                  As a Frontend Developer at Italos, I created and implemented user interface components, designing engaging and user-friendly web interfaces. I utilized modern frontend technologies such as React.js and UI/UX principles to build interactive and responsive websites. I collaborated with design and development teams to ensure seamless user experiences and delivered high-quality frontend solutions.
                 </p>
               </li>
             </TimelineContent>

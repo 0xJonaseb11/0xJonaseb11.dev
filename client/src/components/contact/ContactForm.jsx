@@ -6,20 +6,53 @@ import { ToastContainer, toast } from "react-toastify";
 
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const onError = (error) =>
-    toast.error(error, {
+  
+  const onError = (errorMessage, error) => {
+    console.error("Email error:", error);
+    
+    // Parse error message for better user experience
+    let displayMessage = errorMessage || "Message not sent. Please try again.";
+    
+    // Handle specific EmailJS errors
+    if (errorMessage && errorMessage.includes("Invalid grant")) {
+      displayMessage = "Email service temporarily unavailable. Please contact me directly at sebejaz99@gmail.com or try again later.";
+    } else if (errorMessage && errorMessage.includes("Gmail_API")) {
+      displayMessage = "Email service configuration issue. Please contact me directly at sebejaz99@gmail.com.";
+    } else if (errorMessage && errorMessage.includes("Service not found") || errorMessage.includes("Template not found")) {
+      displayMessage = "Email service configuration error. Please contact me directly at sebejaz99@gmail.com.";
+    }
+    
+    toast.error(displayMessage, {
       position: "top-center",
+      autoClose: 6000,
     });
+  };
 
-  const onSuccess = (success) =>
-    toast.success(success, {
+  const onSuccess = (success) => {
+    toast.success("Message sent to Jonas successfully!", {
       position: "top-center",
     });
+    console.log("Email sent:", success);
+  };
 
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
+    // Validate form fields
+    const formData = new FormData(form.current);
+    const name = formData.get('user_name');
+    const email = formData.get('user_email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    if (!name || !email || !subject || !message) {
+      setIsLoading(false);
+      onError("Please fill in all fields.");
+      return;
+    }
+    
     emailjs
       .sendForm(
         "service_mk44hmb",
@@ -29,18 +62,39 @@ const ContactForm = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          console.log("EmailJS result:", result);
           setIsLoading(false);
-          onSuccess("Message sent to Jonas Successfully", result);
-          e.target.reset();
+          if (result.status === 200) {
+            onSuccess(result);
+            e.target.reset();
+          } else {
+            onError("Failed to send message. Please try again.", result);
+          }
         },
         (error) => {
-          console.log(error.text);
+          console.error("EmailJS error:", error);
           setIsLoading(false);
-          onError("Message not sent", error);
-          console.log("Message not sent!", error);
+          
+          // Extract error message from EmailJS error object
+          let errorMessage = "";
+          if (error.text) {
+            errorMessage = error.text;
+          } else if (error.message) {
+            errorMessage = error.message;
+          } else if (typeof error === 'string') {
+            errorMessage = error;
+          } else {
+            errorMessage = "Please check your connection and try again.";
+          }
+          
+          onError(errorMessage, error);
         }
-      );
+      )
+      .catch((error) => {
+        console.error("Unexpected error:", error);
+        setIsLoading(false);
+        onError("An unexpected error occurred. Please try again later.", error);
+      });
   };
 
   return (

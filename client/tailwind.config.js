@@ -5,6 +5,14 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        general: ['Poppins', 'sans-serif'],
+        'general-medium': ['Poppins', 'sans-serif'],
+        'general-regular': ['Poppins', 'sans-serif'],
+        'general-semibold': ['Poppins', 'sans-serif'],
+        'general-bold': ['Poppins', 'sans-serif'],
+      },
       colors: {
         'primary-light': '#F7F8FC',
         'secondary-light': '#FFFFFF',

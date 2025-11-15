@@ -1,174 +1,72 @@
-import React, { useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { FiCoffee, FiHeart, FiZap } from "react-icons/fi";
 import Discord from "../../images/discord.jpeg";
-import Dev from "../../images/Dev.png";
-import Medium from "../../images/Medium.png";
-import Quora from "../../images/quora.jpeg";
-import Pinterest from "../../images/Pinterest.jpeg";
-import Vimeo from "../../images/Vimeo.png";
-import Behance from "../../images/Behance.png";
-import hashnode from "../../images/hashnode.png";
-import X from "../../images/X.png"
+import X from "../../images/X.png";
 import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
-
+import { FaTelegram, FaWhatsapp } from "react-icons/fa";
+import SendEther from "../footer/SendEther";
 
 import AppFooterCopyright from "./AppFooterCopyright";
 
-const CopyAddressButton = ({ walletAddress }) => {
-  const addressRef = useRef(null);
-
-  const handleCopyClick = () => {
-    if (addressRef.current) {
-      const textArea = document.createElement("textarea");
-      textArea.value = walletAddress;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-
-      window.alert("Address copied to clipboard");
-    }
-  };
-
-  return (
-    <div className="flex items-center 2xsm:p-0 3xsm:p-3 4xsm:p-1.5">
-      <span ref={addressRef} className="break-all mr-2">
-        {walletAddress}
-      </span>
-      <button
-        onClick={handleCopyClick}
-        className="p-2 rounded-xl bg-gray-300 text-gray-800 hover:bg-gray-400 transition"
-      >
-        Copy
-      </button>
-    </div>
-  );
-};
-
-const EthereumWalletAddress = `0xef2fC3CdeBaE8c60F07da3c15A486bdA4769c4f0`;
-const SolanaWalletAddress  = `99fyA7UHjipBCyXKGBdSYTB8B6Jv9iTeL9MAeT1Uokq8`;
-const BitcoinWalletAddress = `bc1pr2ep3kke5hzfmv229tacf8d2w9g828zagu26j5rd0uduagzaa2rqnt9l4r`;
-const TronWalletAddress = `TC9b2eTy4DDPyDypevcorv7hTqANZ7451T`
 const socialLinks = [
   {
     id: 1,
-    icon: <FiGithub className="w-7 rounded-full" />,
-    url: "https://github.com/0xJonaseb11",
+    icon: <FiLinkedin className="w-7 h-7" />,
+    url: "https://www.linkedin.com/in/jonassebera",
+    name: "LinkedIn",
   },
   {
     id: 2,
     icon: (
       <img
-        src={Discord}
-        alt="Discord Logo"
-        width={45}
-        className="w-7 rounded-full"
+        src={X}
+        alt="X (Twitter)"
+        width={28}
+        height={28}
+        className="w-7 h-7 rounded-full"
       />
     ),
-    url: "https://discord.com/users/1065213095431131218",
+    url: "https://twitter.com/0xJonaseb11",
+    name: "X (Twitter)",
   },
   {
     id: 3,
-    icon: <FiLinkedin className="w-7 rounded-full" />,
-    url: "https://www.linkedin.com/in/0xJonaseb11",
+    icon: <FiGithub className="w-7 h-7" />,
+    url: "https://github.com/0xJonaseb11",
+    name: "GitHub",
   },
   {
     id: 4,
     icon: (
-    <img src={X} 
-    alt="X account" 
-    width={50}
-    className="w-7 rounded-full" />
+      <img
+        src={Discord}
+        alt="Discord"
+        width={28}
+        height={28}
+        className="w-7 h-7 rounded-full"
+      />
     ),
-    url: "https://twitter.com/0xJonaseb11",
+    url: "https://discord.com/users/1065213095431131218",
+    name: "Discord",
   },
   {
     id: 5,
-    icon: <FiInstagram className="w-7 rounded-full" />,
+    icon: <FiInstagram className="w-7 h-7" />,
     url: "https://www.instagram.com/sebe_j_az99",
+    name: "Instagram",
   },
   {
     id: 6,
-    icon: (
-      <img
-        src={Medium}
-        alt="Medium Logo"
-        width={50}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://medium.com/@sebejaz99",
+    icon: <FaTelegram className="w-7 h-7" />,
+    url: "https://t.me/0xJonaseb11",
+    name: "Telegram",
   },
   {
     id: 7,
-    icon: (
-      <img
-        src={Quora}
-        alt="Quora logo"
-        width={60}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://www.quora.com/profile/Jaz-1378",
-  },
-  {
-    id: 8,
-    icon: (
-      <img
-        src={Pinterest}
-        alt="Pinterest logo"
-        width={60}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://www.pinterest.com/jonassebera/",
-  },
-  {
-    id: 9,
-    icon: (
-      <img
-        src={Vimeo}
-        alt="Vimeo logo"
-        width={60}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://vimeo.com/user214096081",
-  },
-  {
-    id: 10,
-    icon: (
-      <img
-        src={Behance}
-        alt="Behance logo"
-        width={60}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://www.behance.net/jazjaz5",
-  },
-  {
-    id: 11,
-    icon: (
-      <img
-        src={Dev}
-        alt="Dev Community logo"
-        width={50}
-        className="w-7 rounded-full"
-      />
-    ),
-    url: "https://dev.to/jonassebera",
-  },
-  {
-    id: 12,
-    icon: (
-      <img
-      src={hashnode}
-      alt="hashnode dev community"
-      width={50}
-      className="w-7 rounded-full"
-      />
-    ),
-    url: "https://jonas-sebera.hashnode.dev/"
+    icon: <FaWhatsapp className="w-7 h-7" />,
+    url: "https://wa.me/250795107436",
+    name: "WhatsApp",
   },
 ];
 
@@ -180,72 +78,108 @@ const AppFooter = () => {
         <p className="text-3xl sm:text-4xl text-primary-dark dark:text-primary-light mb-10">
           Let's go social
         </p>
-        <ul className="grid grid-cols-3 gap-3 sm:gap-4 sm:md:xmd:lg:xl:2xl:3xl:grid-cols-11 2xsm:3xsm:4xsm:grid-cols-6 ">
+        <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 sm:gap-6">
           {socialLinks.map((link) => (
             <a
               href={link.url}
-              target="__blank"
+              target="_blank"
+              rel="noopener noreferrer"
               key={link.id}
-              className="text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-200 cursor-pointer rounded-full text-center  dark:hover:bg-gray-800 hover:bg-gray-200 shadow-sm p-2 duration-300"
+              className="group flex flex-col items-center justify-center text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer rounded-xl text-center dark:hover:bg-indigo-500/10 hover:bg-indigo-500/10 shadow-sm hover:shadow-lg p-4 duration-300 transition-all"
+              title={link.name}
             >
-              <i className="w-full text-2xl sm:text-xl md:text-xl xsm:text-xl 2xsm:text-xl 3xsm:text-xl 4xsm:text-base">
+              <div className="mb-2 transform group-hover:scale-110 transition-transform duration-300">
                 {link.icon}
-              </i>
+              </div>
+              <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {link.name}
+              </span>
             </a>
           ))}
         </ul>
 
-        <div className="w-full mt-10 flex flex-col dark:bg-gray-800 opacity-90 bg-gray-100 hover:shadow-2xl border-none items-center p-4 md:p-6 lg:p-12 xl:p-8 md:w-9/12 rounded-xl font-general-medium text-ternary-dark dark:text-ternary-light">
-          <p className="font-semibold font-sans text-indigo-400 mb-2 md:text-xl lg:text-xl shadow-sm sm:text-base xsm:text-base 2xsm:text-base 3xsm:text-base">
-            A quick reminder, we are not alergic to coffee please!! But real{" "}
-            <code className="dark:text-white text-xl text-indigo-600 ">
-              Eth
-            </code>{" "}
-            not{" "}
-            <code className=" text-indigo-600 text-xl dark:text-white ">
-              Faucets.
-            </code>
-          </p>
-          <div className="w-full md:w-9/12 xl:w-2/3 mx-auto mt-6">
-            <p className="mb-2 md:mb-4 text-center text-[#999] font-semibold font-sans text-base xsm:text-base 2xsm:text-base 3xsm:base">
-              Ethereum
-            </p>
-            <div className="w-full dark:bg-gray-500 rounded-full bg-gray-200 p-4 md:p-3 2sm:p-4 xsm:p-4 text-center items-center text-gray-800">
-              <CopyAddressButton
-                walletAddress={EthereumWalletAddress}
-                //className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl break-all max-w-full"
-              />
-              </div>
-               <p className="mb-2 md:mb-4 text-center text-[#999] font-semibold font-sans text-base xsm:text-base 2xsm:text-base 3xsm:base">
-              Solana
-            </p>
-            <div className="w-full dark:bg-gray-500 rounded-full bg-gray-200 p-4 md:p-3 2sm:p-4 xsm:p-4 text-center items-center text-gray-800">
-              <CopyAddressButton
-                walletAddress={SolanaWalletAddress}
-                //className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl break-all max-w-full"
-              />
-              </div>
-               <p className="mb-2 md:mb-4 text-center text-[#999] font-semibold font-sans text-base xsm:text-base 2xsm:text-base 3xsm:base">
-              Tron
-            </p>
-            <div className="w-full dark:bg-gray-500 rounded-full bg-gray-200 p-4 md:p-3 2sm:p-4 xsm:p-4 text-center items-center text-gray-800">
-              <CopyAddressButton
-                walletAddress={TronWalletAddress}
-                //className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl break-all max-w-full"
-              />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full mt-16 flex flex-col items-center"
+        >
+          {/* Enhanced Call-to-Action Section */}
+          <div className="w-full md:w-10/12 lg:w-9/12 xl:w-8/12 relative">
+            <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              {/* Decorative background elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/5 dark:bg-purple-400/5 rounded-full blur-2xl -z-10" />
               
-            </div>
-            <p className="mb-2 md:mb-4 text-center text-[#999] font-semibold font-sans text-base xsm:text-base 2xsm:text-base 3xsm:base">
-              BTC
-            </p>
-            <div className="w-full dark:bg-gray-500 rounded-full bg-gray-200 p-4 md:p-3 2sm:p-4 xsm:p-4 text-center items-center text-gray-800">
-              <CopyAddressButton
-                walletAddress={BitcoinWalletAddress}
-                //className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl break-all max-w-full"
-              />
+              <div className="relative z-10">
+                {/* Main heading */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-center mb-6"
+                >
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <motion.div
+                      animate={{ rotate: [0, 15, -15, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                    >
+                      <FiCoffee className="text-3xl md:text-4xl text-indigo-500 dark:text-indigo-400" />
+                    </motion.div>
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                    >
+                      <FiHeart className="text-2xl md:text-3xl text-red-500 dark:text-red-400" />
+                    </motion.div>
+                    <motion.div
+                      animate={{ rotate: [0, -15, 15, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 2.5 }}
+                    >
+                      <FiZap className="text-3xl md:text-4xl text-yellow-500 dark:text-yellow-400" />
+                    </motion.div>
+                  </div>
+                  
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark dark:text-primary-light mb-4 leading-tight">
+                    Support My Work
+                  </h2>
+                  
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-ternary-dark dark:text-ternary-light mb-2 font-medium">
+                    Love what I do? Show your appreciation!
+                  </p>
+                  
+                  <p className="text-sm sm:text-base md:text-lg text-ternary-dark/80 dark:text-ternary-light/80 max-w-2xl mx-auto leading-relaxed">
+                    While I appreciate coffee, I'm powered by real{" "}
+                    <span className="font-bold text-indigo-600 dark:text-indigo-400 text-lg md:text-xl">
+                      ETH
+                    </span>
+                    {" "}— not testnet faucets. Your support helps me continue building amazing blockchain solutions.
+                  </p>
+                </motion.div>
+
+                {/* Divider */}
+                <div className="flex items-center justify-center gap-4 my-8">
+                  <div className="h-px bg-indigo-500/20 dark:bg-indigo-400/20 flex-1 max-w-20" />
+                  <div className="w-2 h-2 rounded-full bg-indigo-500 dark:bg-indigo-400" />
+                  <div className="h-px bg-indigo-500/20 dark:bg-indigo-400/20 flex-1 max-w-20" />
+                </div>
+
+                {/* Web3 Send Ether Component */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="w-full"
+                >
+                  <SendEther />
+                </motion.div>
               </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <AppFooterCopyright />

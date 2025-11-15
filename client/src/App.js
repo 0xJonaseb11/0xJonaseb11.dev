@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import AppFooter from "./components/shared/AppFooter";
 import AppHeader from "./components/shared/AppHeader";
 import Loader from "./components/loader/loader";
+import Web3Provider from "./providers/Web3Provider";
 import "./css/App.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import UseScrollToTop from "./hooks/useScrollToTop";
@@ -19,31 +20,33 @@ const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 
 function App() {
   return (
-    <AnimatePresence>
-      <Suspense fallback={<Loader />}>
-        <div className="bg-secondary-light dark:bg-primary-dark z-[-2] transition duration-300">
-          <Router>
-            <ScrollToTop />
-            <AppHeader />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route
-                path="/projects/single-project/:id"
-                element={<ProjectSingle />}
-              />
+    <Web3Provider>
+      <AnimatePresence>
+        <Suspense fallback={<Loader />}>
+          <div className="bg-secondary-light dark:bg-primary-dark z-[-2] transition duration-300">
+            <Router>
+              <ScrollToTop />
+              <AppHeader />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route
+                  path="/projects/single-project/:id"
+                  element={<ProjectSingle />}
+                />
 
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/resume" element={<Resume />} />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-            <AppFooter />
-          </Router>
-          <UseScrollToTop />
-        </div>
-      </Suspense>
-    </AnimatePresence>
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/resume" element={<Resume />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+              <AppFooter />
+            </Router>
+            <UseScrollToTop />
+          </div>
+        </Suspense>
+      </AnimatePresence>
+    </Web3Provider>
   );
 }
 

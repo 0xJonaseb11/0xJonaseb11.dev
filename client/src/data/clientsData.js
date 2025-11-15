@@ -11,7 +11,7 @@ import Values from "../images/Interests/values.png";
 import Decentralization from "../images/Interests/decentralization.png";
 import Reading from "../images/Interests/reading.png";
 import Shows from "../images/Interests/shows.jpeg";
-import Spotify from "../images/Interests/spotify.jpeg";
+import Spotify from "../images/Interests/spotify.svg";
 
 export const clientsHeading = "My Areas Of Great Interests";
 
@@ -87,6 +87,6 @@ export const clientsData = [
     id: 12,
     title: "Listening to Music",
     img: Spotify,
-    description: "I Love listening to sportify music",
+    description: "I Love listening to spotify music",
   },
 ];

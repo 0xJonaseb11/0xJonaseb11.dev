@@ -196,7 +196,7 @@ const AppHeader = () => {
         <div className="hidden sm:flex items-center gap-2 lg:gap-3 flex-shrink-0">
           <motion.span
             onClick={showHireMeModal}
-            className="text-xs sm:text-sm lg:text-base font-general-medium bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl rounded-lg px-3 sm:px-4 lg:px-5 py-2 lg:py-2.5 duration-300 cursor-pointer whitespace-nowrap"
+            className="text-xs sm:text-sm lg:text-base font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white shadow-lg hover:shadow-xl rounded-lg px-3 sm:px-4 lg:px-5 py-2 lg:py-2.5 duration-300 cursor-pointer whitespace-nowrap"
             aria-label="Hire Me Button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -220,13 +220,11 @@ const AppHeader = () => {
           </motion.div>
         </div>
       </div>
-      {/* Hire me modal */}
-      <div>
-        {showModal ? (
-          <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} />
-        ) : null}
-        {showModal ? showHireMeModal : null}
-      </div>
+      
+      {/* Hire me modal - Rendered via portal outside navbar */}
+      {showModal && (
+        <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} />
+      )}
     </motion.nav>
   );
 };
