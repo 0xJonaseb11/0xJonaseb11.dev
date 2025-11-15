@@ -16,7 +16,7 @@
 		"clipboard-copy": "^4.0.1",
 		"framer-motion": "10.16.4",
 		"lightgallery": "^2.7.2",
-		"npm": "^10.2.4",
+		"npm": "^10.9.4",
 		"postcss-cli": "^10.1.0",
 		"react": "^18.2.0",
 		"react-countup": "^6.4.2",
