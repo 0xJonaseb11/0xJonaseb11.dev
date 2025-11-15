@@ -142,7 +142,7 @@ const AppFooter = () => {
                     </motion.div>
                   </div>
                   
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark dark:text-primary-light mb-4 leading-tight">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-700 dark:text-primary-light mb-4 leading-tight">
                     Support My Work
                   </h2>
                   
