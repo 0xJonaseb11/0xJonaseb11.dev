@@ -6,7 +6,16 @@ import { Link, useParams } from 'react-router-dom';
 const ProjectRelatedProjects = () => {
 	const { singleProjectData } = useContext(SingleProjectContext);
 	const { id } = useParams();
-	const data = singleProjectData[id];
+	const projectId = parseInt(id, 10);
+	const data = singleProjectData[projectId];
+
+	if (!data || !data.RelatedProject) {
+		return (
+			<div className="mt-10 pt-10 sm:pt-14 sm:mt-20">
+				<p className="text-primary-dark dark:text-primary-light">Related projects not found</p>
+			</div>
+		);
+	}
 
 	return (
 		<div className="mt-10 pt-10 sm:pt-14 sm:mt-20 border-t-2 border-primary-light dark:border-secondary-dark">

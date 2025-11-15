@@ -6,7 +6,16 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const ProjectGallery = () => {
   const { singleProjectData } = useContext(SingleProjectContext);
   const { id } = useParams();
-  const data = singleProjectData[id];
+  const projectId = parseInt(id, 10);
+  const data = singleProjectData[projectId];
+
+  if (!data || !data.ProjectImages) {
+    return (
+      <div className="mt-12">
+        <p className="text-primary-dark dark:text-primary-light">Project images not found</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-10 mt-12">

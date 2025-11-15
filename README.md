@@ -8,7 +8,7 @@ Sample-Preview
 
 ![Portfolio-sample-preview](jonas-sebera.vercel.app.png)
 
-This marks my overall skill set show case so far with my Software Engineering journey
+This marks my overall skill set showcase so far with my Software Engineering journey
 
 &#169; All rights reserved, Copy of this software and associated documentation files.
 &#169;copyright 2024 - Jonas Sebera @0xJonaseb11

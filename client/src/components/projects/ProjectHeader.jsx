@@ -6,7 +6,16 @@ import { useParams } from "react-router-dom";
 const ProjectSingleHeader = () => {
   const { singleProjectData } = useContext(SingleProjectContext);
   const { id } = useParams();
-  const data = singleProjectData[id];
+  const projectId = parseInt(id, 10);
+  const data = singleProjectData[projectId];
+
+  if (!data || !data.ProjectHeader) {
+    return (
+      <div className="mt-14 sm:mt-20">
+        <p className="text-primary-dark dark:text-primary-light">Project not found</p>
+      </div>
+    );
+  }
 
   return (
     <div>

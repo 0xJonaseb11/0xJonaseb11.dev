@@ -5,7 +5,16 @@ import { useParams } from "react-router-dom";
 const ProjectInfo = () => {
   const { singleProjectData } = useContext(SingleProjectContext);
   const { id } = useParams();
-  const data = singleProjectData[id];
+  const projectId = parseInt(id, 10);
+  const data = singleProjectData[projectId];
+
+  if (!data || !data.ProjectInfo) {
+    return (
+      <div className="mt-14">
+        <p className="text-primary-dark dark:text-primary-light">Project information not found</p>
+      </div>
+    );
+  }
 
   return (
     <div className="block sm:flex gap-0 sm:gap-10 mt-14">
@@ -17,24 +26,26 @@ const ProjectInfo = () => {
           </p>
           <ul className="leading-loose">
             {data.ProjectInfo.CompanyInfo.map((info) => {
+              const isLink = info.title === "Website" || info.title === "LinkedIn" || info.title === "Demo Video" || (info.title === "Phone" && info.details.startsWith("tel:"));
               return (
                 <li
                   className="font-general-regular text-ternary-dark dark:text-ternary-light"
                   key={info.id}
                 >
                   <span>{info.title}: </span>
-                  <a
-                    href={info.details}
-                    target="___blank"
-                    className={
-                      info.title === "Website" || info.title === "Phone"
-                        ? "hover:underline hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer duration-300"
-                        : ""
-                    }
-                    aria-label="Project Website and Phone"
-                  >
-                    {info.details}
-                  </a>
+                  {isLink ? (
+                    <a
+                      href={info.details}
+                      target={info.details.startsWith("http") ? "_blank" : undefined}
+                      rel={info.details.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="hover:underline hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer duration-300"
+                      aria-label={`${info.title} link`}
+                    >
+                      {info.details}
+                    </a>
+                  ) : (
+                    <span>{info.details}</span>
+                  )}
                 </li>
               );
             })}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AppBanner from "../components/shared/AppBanner";
+import CreativeBackground from "../components/shared/CreativeBackground";
 import ProjectsGrid from "../components/projects/ProjectsGrid";
 import { ProjectsProvider } from "../context/ProjectsContext";
 import Button from "../components/reusable/Button";
@@ -8,8 +9,10 @@ import Testimonials from "../components/Testimonials/Testimonials";
 
 const Home = () => {
   return (
-    <div className="container mx-auto w-full">
-      <AppBanner></AppBanner>
+    <div className="container mx-auto w-full relative min-h-screen">
+      <CreativeBackground />
+      <div className="relative z-10 pt-4">
+        <AppBanner></AppBanner>
 
       <Doings />
 
@@ -27,6 +30,7 @@ const Home = () => {
       </div>
 
       <Testimonials />
+      </div>
     </div>
   );
 };

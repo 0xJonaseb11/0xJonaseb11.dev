@@ -21,7 +21,7 @@ function App() {
   return (
     <AnimatePresence>
       <Suspense fallback={<Loader />}>
-        <div className=" bg-secondary-light dark:bg-primary-dark z-[-2] transition duration-300">
+        <div className="bg-secondary-light dark:bg-primary-dark z-[-2] transition duration-300">
           <Router>
             <ScrollToTop />
             <AppHeader />
