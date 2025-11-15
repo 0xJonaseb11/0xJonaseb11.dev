@@ -1,9 +1,10 @@
 import { AnimatePresence } from "framer-motion";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AppFooter from "./components/shared/AppFooter";
 import AppHeader from "./components/shared/AppHeader";
+import Web3WelcomeModal from "./components/shared/Web3WelcomeModal";
 import Loader from "./components/loader/loader";
 import Web3Provider from "./providers/Web3Provider";
 import "./css/App.css";
@@ -19,6 +20,30 @@ const Resume = lazy(() => import("./pages/Resume.jsx"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 
 function App() {
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  useEffect(() => {
+    // Check if user has seen the welcome modal in this session
+    const hasSeenWelcome = sessionStorage.getItem('web3WelcomeSeen');
+    
+    // Show modal if not seen in this session (you can change to localStorage for "once ever")
+    if (!hasSeenWelcome) {
+      // Small delay for better UX
+      const timer = setTimeout(() => {
+        setShowWelcomeModal(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleCloseWelcome = () => {
+    setShowWelcomeModal(false);
+    // Mark as seen in this session
+    sessionStorage.setItem('web3WelcomeSeen', 'true');
+    // If you want it to show only once ever (not per session), use localStorage instead:
+    // localStorage.setItem('web3WelcomeSeen', 'true');
+  };
+
   return (
     <Web3Provider>
       <AnimatePresence>
@@ -43,6 +68,11 @@ function App() {
               <AppFooter />
             </Router>
             <UseScrollToTop />
+            
+            {/* Web3 Welcome Modal */}
+            {showWelcomeModal && (
+              <Web3WelcomeModal onClose={handleCloseWelcome} />
+            )}
           </div>
         </Suspense>
       </AnimatePresence>

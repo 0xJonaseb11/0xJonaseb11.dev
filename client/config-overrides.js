@@ -4,7 +4,8 @@ module.exports = override(
   addWebpackResolve({
     // Ensure openapi-fetch is properly resolved
     fallback: {
-      // Add any necessary fallbacks if needed
+      // Fix MetaMask SDK async-storage issue (React Native dependency not needed for web)
+      '@react-native-async-storage/async-storage': false,
     },
     // Add alias to ensure proper module resolution
     alias: {
