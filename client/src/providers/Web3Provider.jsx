@@ -1,17 +1,15 @@
-import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
-import { mainnet, base } from 'wagmi/chains';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import "@rainbow-me/rainbowkit/styles.css";
+import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { WagmiProvider } from "wagmi";
+import { mainnet, base } from "wagmi/chains";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-// Configure RainbowKit - Mainnets only (no testnets)
-// Note: For production, get a free project ID from https://cloud.walletconnect.com
-// For now, using a placeholder - WalletConnect will work but with limited features
 const config = getDefaultConfig({
-  appName: 'Jonas Sebera Portfolio',
-  projectId: process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || 'default-project-id',
-  chains: [mainnet, base], // Only mainnets - real money only
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  appName: "Jonas Sebera Portfolio",
+  projectId:
+    process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || "default-project-id",
+  chains: [mainnet, base],
+  ssr: true,
 });
 
 const queryClient = new QueryClient();
@@ -20,13 +18,10 @@ const Web3Provider = ({ children }) => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          {children}
-        </RainbowKitProvider>
+        <RainbowKitProvider>{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
 };
 
 export default Web3Provider;
-

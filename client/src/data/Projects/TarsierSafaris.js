@@ -137,7 +137,9 @@ export const TarsierSafaris = {
         shareButton: (
           <TwitterShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/5"
-            quote={"Tarsier Safaris Limited - Premium Travel & Tourism Platform"}
+            quote={
+              "Tarsier Safaris Limited - Premium Travel & Tourism Platform"
+            }
             hashtag={"#webdevelopment #nextjs #traveltech"}
           >
             <TwitterIcon size={40} round={true} />
@@ -151,7 +153,9 @@ export const TarsierSafaris = {
         shareButton: (
           <MailruShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/5"
-            quote={"Tarsier Safaris Limited - Premium Travel & Tourism Platform"}
+            quote={
+              "Tarsier Safaris Limited - Premium Travel & Tourism Platform"
+            }
             hashtag={"#webdevelopment #nextjs"}
           >
             <MailruIcon size={40} round={true} />
@@ -165,7 +169,9 @@ export const TarsierSafaris = {
         shareButton: (
           <FacebookShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/5"
-            quote={"Tarsier Safaris Limited - Premium Travel & Tourism Platform"}
+            quote={
+              "Tarsier Safaris Limited - Premium Travel & Tourism Platform"
+            }
             hashtag={"#webdevelopment #nextjs #traveltech"}
           >
             <FacebookIcon size={40} round={true} />
@@ -179,7 +185,9 @@ export const TarsierSafaris = {
         shareButton: (
           <LinkedinShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/5"
-            quote={"Tarsier Safaris Limited - Premium Travel & Tourism Platform"}
+            quote={
+              "Tarsier Safaris Limited - Premium Travel & Tourism Platform"
+            }
             hashtag={"#webdevelopment #nextjs"}
           >
             <LinkedinIcon size={40} round={true} />
@@ -193,7 +201,9 @@ export const TarsierSafaris = {
         shareButton: (
           <WhatsappShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/5"
-            quote={"Tarsier Safaris Limited - Premium Travel & Tourism Platform"}
+            quote={
+              "Tarsier Safaris Limited - Premium Travel & Tourism Platform"
+            }
             hashtag={"#webdevelopment"}
           >
             <WhatsappIcon size={40} round={true} />
@@ -220,4 +230,3 @@ export const TarsierSafaris = {
     ],
   },
 };
-

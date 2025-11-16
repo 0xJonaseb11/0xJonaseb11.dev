@@ -142,7 +142,9 @@ export const Digicert = {
         shareButton: (
           <TwitterShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/8"
-            quote={"DIGICERT - Blockchain-Powered Digital Certification Platform"}
+            quote={
+              "DIGICERT - Blockchain-Powered Digital Certification Platform"
+            }
             hashtag={"#blockchain #web3 #certification #nextjs"}
           >
             <TwitterIcon size={40} round={true} />
@@ -156,7 +158,9 @@ export const Digicert = {
         shareButton: (
           <MailruShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/8"
-            quote={"DIGICERT - Blockchain-Powered Digital Certification Platform"}
+            quote={
+              "DIGICERT - Blockchain-Powered Digital Certification Platform"
+            }
             hashtag={"#blockchain #web3"}
           >
             <MailruIcon size={40} round={true} />
@@ -170,7 +174,9 @@ export const Digicert = {
         shareButton: (
           <FacebookShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/8"
-            quote={"DIGICERT - Blockchain-Powered Digital Certification Platform"}
+            quote={
+              "DIGICERT - Blockchain-Powered Digital Certification Platform"
+            }
             hashtag={"#blockchain #web3 #certification"}
           >
             <FacebookIcon size={40} round={true} />
@@ -184,7 +190,9 @@ export const Digicert = {
         shareButton: (
           <LinkedinShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/8"
-            quote={"DIGICERT - Blockchain-Powered Digital Certification Platform"}
+            quote={
+              "DIGICERT - Blockchain-Powered Digital Certification Platform"
+            }
             hashtag={"#blockchain #web3"}
           >
             <LinkedinIcon size={40} round={true} />
@@ -198,7 +206,9 @@ export const Digicert = {
         shareButton: (
           <WhatsappShareButton
             url="https://jonas-sebera.vercel.app/projects/single-project/8"
-            quote={"DIGICERT - Blockchain-Powered Digital Certification Platform"}
+            quote={
+              "DIGICERT - Blockchain-Powered Digital Certification Platform"
+            }
             hashtag={"#blockchain"}
           >
             <WhatsappIcon size={40} round={true} />
@@ -224,4 +234,3 @@ export const Digicert = {
     ],
   },
 };
-

@@ -111,7 +111,7 @@ const AppFooter = () => {
               {/* Decorative background elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/5 dark:bg-purple-400/5 rounded-full blur-2xl -z-10" />
-              
+
               <div className="relative z-10">
                 {/* Main heading */}
                 <motion.div
@@ -124,38 +124,51 @@ const AppFooter = () => {
                   <div className="flex items-center justify-center gap-3 mb-4">
                     <motion.div
                       animate={{ rotate: [0, 15, -15, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatDelay: 2,
+                      }}
                     >
                       <FiCoffee className="text-3xl md:text-4xl text-indigo-500 dark:text-indigo-400" />
                     </motion.div>
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                      }}
                     >
                       <FiHeart className="text-2xl md:text-3xl text-red-500 dark:text-red-400" />
                     </motion.div>
                     <motion.div
                       animate={{ rotate: [0, -15, 15, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 2.5 }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatDelay: 2.5,
+                      }}
                     >
                       <FiZap className="text-3xl md:text-4xl text-yellow-500 dark:text-yellow-400" />
                     </motion.div>
                   </div>
-                  
+
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-700 dark:text-primary-light mb-4 leading-tight">
                     Support My Work
                   </h2>
-                  
+
                   <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-ternary-dark dark:text-ternary-light mb-2 font-medium">
                     Love what I do? Show your appreciation!
                   </p>
-                  
+
                   <p className="text-sm sm:text-base md:text-lg text-ternary-dark/80 dark:text-ternary-light/80 max-w-2xl mx-auto leading-relaxed">
                     While I appreciate coffee, I'm powered by real{" "}
                     <span className="font-bold text-indigo-600 dark:text-indigo-400 text-lg md:text-xl">
                       ETH
-                    </span>
-                    {" "}— not testnet faucets. Your support helps me continue building amazing blockchain solutions.
+                    </span>{" "}
+                    — not testnet faucets. Your support helps me continue
+                    building amazing blockchain solutions.
                   </p>
                 </motion.div>
 
@@ -181,7 +194,6 @@ const AppFooter = () => {
           </div>
         </motion.div>
       </div>
-
       <AppFooterCopyright />
     </div>
   );

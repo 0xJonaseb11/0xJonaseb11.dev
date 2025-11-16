@@ -149,7 +149,14 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  As a Software Engineer at Tarsier Safaris Ltd, I develop and maintain software solutions for the travel and tourism industry. I work on building scalable web applications, implementing modern development practices, and ensuring high-quality code delivery. My responsibilities include collaborating with cross-functional teams, designing system architectures, and developing features that enhance the user experience for travel services.
+                  As a Software Engineer at Tarsier Safaris Ltd, I develop and
+                  maintain software solutions for the travel and tourism
+                  industry. I work on building scalable web applications,
+                  implementing modern development practices, and ensuring
+                  high-quality code delivery. My responsibilities include
+                  collaborating with cross-functional teams, designing system
+                  architectures, and developing features that enhance the user
+                  experience for travel services.
                 </p>
               </li>
             </TimelineContent>
@@ -172,7 +179,13 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  I currently lead technical support for developers, guiding blockchain integrations, smart contract deployment, and troubleshooting. I streamline onboarding processes, resolve complex technical issues, and ensure seamless developer experiences. My role involves providing expert guidance on Web3 technologies, debugging smart contracts, and facilitating smooth blockchain integrations for our developer community.
+                  I currently lead technical support for developers, guiding
+                  blockchain integrations, smart contract deployment, and
+                  troubleshooting. I streamline onboarding processes, resolve
+                  complex technical issues, and ensure seamless developer
+                  experiences. My role involves providing expert guidance on
+                  Web3 technologies, debugging smart contracts, and facilitating
+                  smooth blockchain integrations for our developer community.
                 </p>
               </li>
             </TimelineContent>
@@ -195,7 +208,13 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  As Lead Blockchain Developer, I architect and develop decentralized applications and smart contract solutions. I lead a team of blockchain developers, set technical standards, and drive innovation in Web3 development. My responsibilities include designing scalable blockchain architectures, conducting code reviews, mentoring team members, and ensuring best practices in smart contract security and deployment.
+                  As Lead Blockchain Developer, I architect and develop
+                  decentralized applications and smart contract solutions. I
+                  lead a team of blockchain developers, set technical standards,
+                  and drive innovation in Web3 development. My responsibilities
+                  include designing scalable blockchain architectures,
+                  conducting code reviews, mentoring team members, and ensuring
+                  best practices in smart contract security and deployment.
                 </p>
               </li>
             </TimelineContent>
@@ -218,7 +237,14 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  As CEO and Co-Founder of Stone.proof Labs, I lead strategic direction and operations for a blockchain-based mineral supply chain platform. I oversee business development, manage stakeholder relationships, and drive product innovation. My role involves setting company vision, building strategic partnerships, managing resources, and ensuring the company's mission of bringing transparency to mineral supply chains through blockchain technology.
+                  As CEO and Co-Founder of Stone.proof Labs, I lead strategic
+                  direction and operations for a blockchain-based mineral supply
+                  chain platform. I oversee business development, manage
+                  stakeholder relationships, and drive product innovation. My
+                  role involves setting company vision, building strategic
+                  partnerships, managing resources, and ensuring the company's
+                  mission of bringing transparency to mineral supply chains
+                  through blockchain technology.
                 </p>
               </li>
             </TimelineContent>
@@ -241,7 +267,13 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  I lead the technical development of blockchain solutions for mineral supply chain traceability. I design and implement smart contracts, develop decentralized applications, and architect secure blockchain systems. My work focuses on creating immutable records for mineral tracking, ensuring data integrity, and building scalable solutions that bring transparency to supply chain operations.
+                  I lead the technical development of blockchain solutions for
+                  mineral supply chain traceability. I design and implement
+                  smart contracts, develop decentralized applications, and
+                  architect secure blockchain systems. My work focuses on
+                  creating immutable records for mineral tracking, ensuring data
+                  integrity, and building scalable solutions that bring
+                  transparency to supply chain operations.
                 </p>
               </li>
             </TimelineContent>
@@ -264,7 +296,14 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  During my internship at Blockify Technologies, I developed and tested smart contracts, working with various blockchain technologies and frameworks. I gained hands-on experience in building decentralized applications, writing secure smart contracts, and integrating blockchain solutions with web applications. This role provided me with foundational knowledge in Web3 development and smart contract best practices.
+                  During my internship at Blockify Technologies, I developed and
+                  tested smart contracts, working with various blockchain
+                  technologies and frameworks. I gained hands-on experience in
+                  building decentralized applications, writing secure smart
+                  contracts, and integrating blockchain solutions with web
+                  applications. This role provided me with foundational
+                  knowledge in Web3 development and smart contract best
+                  practices.
                 </p>
               </li>
             </TimelineContent>
@@ -286,7 +325,13 @@ const Resume = () => {
                 </span>
 
                 <p className="timeline-text font-general-medium text-primary-dark dark:text-ternary-light font-medium">
-                  As a Frontend Developer at Italos, I created and implemented user interface components, designing engaging and user-friendly web interfaces. I utilized modern frontend technologies such as React.js and UI/UX principles to build interactive and responsive websites. I collaborated with design and development teams to ensure seamless user experiences and delivered high-quality frontend solutions.
+                  As a Frontend Developer at Italos, I created and implemented
+                  user interface components, designing engaging and
+                  user-friendly web interfaces. I utilized modern frontend
+                  technologies such as React.js and UI/UX principles to build
+                  interactive and responsive websites. I collaborated with
+                  design and development teams to ensure seamless user
+                  experiences and delivered high-quality frontend solutions.
                 </p>
               </li>
             </TimelineContent>

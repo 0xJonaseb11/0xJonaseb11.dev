@@ -69,7 +69,8 @@ export const Web3Mates = {
       {
         id: 2,
         title: "Services",
-        details: "Full-Stack Web Development • Blockchain Platform • Community Platform",
+        details:
+          "Full-Stack Web Development • Blockchain Platform • Community Platform",
       },
       {
         id: 3,
@@ -215,4 +216,3 @@ export const Web3Mates = {
     ],
   },
 };
-

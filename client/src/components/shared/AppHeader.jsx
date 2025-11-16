@@ -220,7 +220,7 @@ const AppHeader = () => {
           </motion.div>
         </div>
       </div>
-      
+
       {/* Hire me modal - Rendered via portal outside navbar */}
       {showModal && (
         <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} />

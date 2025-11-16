@@ -57,7 +57,6 @@ export const StoneProofLabs = {
       title: "StoneProofLabs - Analytics & Reporting Dashboard",
       img: stoneProof6,
     },
-
   ],
   ProjectInfo: {
     ClientHeading: "About Client",

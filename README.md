@@ -1,12 +1,6 @@
-# Jonas-sebera-portfolio.dev
+# 0xJonaseb11.dev
 
-_**Author : @0xJonaseb11**_
-
-[How it looks](https://jonas-sebera.vercel.app)
-
-Sample-Preview
-
-![Portfolio-sample-preview](jonas-sebera.vercel.app.png)
+[Look it out](https://jonas-sebera.vercel.app)
 
 This marks my overall skill set showcase so far with my Software Engineering journey
 
@@ -15,6 +9,6 @@ This marks my overall skill set showcase so far with my Software Engineering jou
 
 Report anything at <sebejaz99@gmail.com>
 
---------------------
+---
 
 @0xJonaseb11
