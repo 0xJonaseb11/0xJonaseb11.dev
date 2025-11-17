@@ -590,12 +590,12 @@ const Web3WelcomeModal = ({ onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="bg-black/80 backdrop-blur-md fixed inset-0 w-full h-full"
+          className="bg-black/10 dark:bg-black/10 backdrop-blur-md fixed inset-0 w-full h-full"
         />
 
         {/* Modal Content */}
         <div
-          className="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto z-[201] pointer-events-none"
+          className="fixed inset-0 flex items-start justify-center pt-8 sm:pt-12 md:pt-16 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 overflow-y-auto z-[201] pointer-events-none"
           onClick={(e) => e.stopPropagation()}
         >
           <motion.div
@@ -603,7 +603,7 @@ const Web3WelcomeModal = ({ onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="relative w-full max-w-2xl bg-primary-dark border-2 border-indigo-500/30 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto"
+            className="relative w-full max-w-2xl mt-2 bg-secondary-light dark:bg-primary-dark border-2 border-indigo-500/30 dark:border-indigo-500/30 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Subtle Background Pattern */}
@@ -613,30 +613,62 @@ const Web3WelcomeModal = ({ onClose }) => {
             </div>
 
             {/* Header */}
-            <div className="relative z-10 flex items-center justify-between p-6 border-b border-indigo-500/20">
-              <div className="flex items-center gap-3">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <SiEthereum className="text-3xl text-indigo-400" />
-                </motion.div>
-                <div>
-                  <h2 className="text-2xl font-bold text-primary-light">
-                    Welcome to Web3
-                  </h2>
-                  <p className="text-sm text-ternary-light">
-                    Blockchain & Web3 Specialist Portfolio
-                  </p>
+            <div className="relative z-10 flex items-center justify-between p-6 border-b border-indigo-500/20 dark:border-indigo-500/20">
+              <div className="flex items-center gap-4">
+                {/* Welcoming Animated Icon Group */}
+                <div className="relative flex items-center justify-center">
+                  {/* Main welcoming circle with glow */}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute w-16 h-16 bg-indigo-500/20 dark:bg-indigo-500/30 rounded-full blur-xl"
+                  />
+                  
+                 
+ 
+
+                </div>
+                <div className="flex-1">
+                  <motion.h2
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-2xl text-center sm:text-3xl font-bold text-ternary-dark dark:text-primary-light mb-1"
+                  >
+                    Welcome to My Digital Space
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-sm sm:text-base text-ternary-dark dark:text-ternary-light mb-3 text-center"
+                  >
+                    Crafting innovative software solutions and building the future of decentralized applications
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+                    <span className="text-xs sm:text-sm font-semibold text-indigo-500 dark:text-indigo-400 px-3 py-1 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full">
+                      Discover Web3 Insights
+                    </span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+                  </motion.div>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-indigo-500/20 rounded-lg transition-colors text-ternary-light hover:text-primary-light"
+                className="p-2 hover:bg-indigo-500/20 rounded-lg transition-colors text-ternary-dark dark:text-ternary-light hover:text-ternary-dark dark:hover:text-primary-light ml-4 flex-shrink-0"
                 aria-label="Close modal"
               >
                 <FiX className="text-2xl" />
@@ -667,7 +699,7 @@ const Web3WelcomeModal = ({ onClose }) => {
                       className="flex items-center gap-3"
                     >
                       {currentFact.icon}
-                      <span className="px-4 py-1.5 bg-white/10 dark:bg-black/20 rounded-full text-sm font-semibold text-primary-light backdrop-blur-sm">
+                      <span className="px-4 py-1.5 bg-white/10 dark:bg-black/20 rounded-full text-sm font-semibold text-ternary-dark dark:text-primary-light backdrop-blur-sm">
                         {currentFact.category}
                       </span>
                     </motion.div>
@@ -678,7 +710,7 @@ const Web3WelcomeModal = ({ onClose }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-2xl font-bold text-primary-light mb-4"
+                    className="text-2xl font-bold text-ternary-dark dark:text-primary-light mb-4"
                   >
                     {currentFact.title}
                   </motion.h3>
@@ -688,7 +720,7 @@ const Web3WelcomeModal = ({ onClose }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-lg text-ternary-light leading-relaxed"
+                    className="text-lg text-ternary-dark dark:text-ternary-light leading-relaxed"
                   >
                     {currentFact.fact}
                   </motion.p>
@@ -710,7 +742,7 @@ const Web3WelcomeModal = ({ onClose }) => {
                   onClick={getRandomFact}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex-1 px-6 py-3 bg-purple-500/20 hover:bg-purple-500/30 border-2 border-purple-500/30 text-primary-light font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 bg-purple-500/20 hover:bg-purple-500/30 border-2 border-purple-500/30 text-ternary-dark dark:text-primary-light font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <FiZap />
                   <span>Random</span>
@@ -725,8 +757,8 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.5 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-indigo-500/20"
                 >
-                  <div className="text-2xl font-bold text-indigo-400">69</div>
-                  <div className="text-xs text-ternary-light mt-1">
+                  <div className="text-2xl font-bold text-indigo-400 dark:text-indigo-400">69</div>
+                  <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Web3 Facts
                   </div>
                 </motion.div>
@@ -736,8 +768,8 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.6 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-purple-500/20"
                 >
-                  <div className="text-2xl font-bold text-purple-400">100%</div>
-                  <div className="text-xs text-ternary-light mt-1">
+                  <div className="text-2xl font-bold text-purple-400 dark:text-purple-400">100%</div>
+                  <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Blockchain Focus
                   </div>
                 </motion.div>
@@ -747,8 +779,8 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.7 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-pink-500/20"
                 >
-                  <div className="text-2xl font-bold text-pink-400">∞</div>
-                  <div className="text-xs text-ternary-light mt-1">
+                  <div className="text-2xl font-bold text-pink-400 dark:text-pink-400">∞</div>
+                  <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Possibilities
                   </div>
                 </motion.div>
@@ -756,7 +788,7 @@ const Web3WelcomeModal = ({ onClose }) => {
             </div>
 
             {/* Footer */}
-            <div className="relative z-10 p-6 border-t border-indigo-500/20 bg-indigo-500/5">
+            <div className="relative z-10 p-6 border-t border-indigo-500/20 dark:border-indigo-500/20 bg-indigo-500/5 dark:bg-indigo-500/5">
               <motion.button
                 onClick={onClose}
                 whileHover={{ scale: 1.02 }}
