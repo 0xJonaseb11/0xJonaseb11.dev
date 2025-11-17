@@ -1,0 +1,86 @@
+{
+	"name": "react-tailwindcss-portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@emailjs/browser": "^3.11.0",
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@mui/lab": "^5.0.0-alpha.143",
+		"@mui/material": "^5.14.8",
+		"@rainbow-me/rainbowkit": "^2.2.9",
+		"@react-three/drei": "^9.73.0",
+		"@react-three/fiber": "^8.14.3",
+		"@tanstack/react-query": "^5.90.9",
+		"@testing-library/jest-dom": "^6.1.3",
+		"@testing-library/react": "^14.0.0",
+		"@testing-library/user-event": "^14.4.3",
+		"ajv": "^8.17.1",
+		"ajv-keywords": "^5.1.0",
+		"clipboard-copy": "^4.0.1",
+		"framer-motion": "^10.16.4",
+		"lightgallery": "^2.9.0",
+		"openapi-fetch": "^0.13.8",
+		"postcss-cli": "^10.1.0",
+		"react": "^18.2.0",
+		"react-countup": "^6.4.2",
+		"react-dom": "^18.2.0",
+		"react-icons": "^4.11.0",
+		"react-lazy-load-image-component": "^1.6.0",
+		"react-router-dom": "^6.15.0",
+		"react-scripts": "^5.0.1",
+		"react-scroll": "^1.8.9",
+		"react-share": "^4.4.1",
+		"react-toastify": "^9.1.3",
+		"react-vivus": "^0.0.2",
+		"styled-components": "^6.0.7",
+		"swiper": "^10.2.0",
+		"three": "^0.156.1",
+		"viem": "^2.39.0",
+		"vivus": "^0.4.6",
+		"wagmi": "^2.19.4",
+		"web-vitals": "^3.4.0",
+		"web3": "^4.8.0"
+	},
+	"scripts": {
+		"start": "react-app-rewired start",
+		"build": "react-app-rewired build",
+		"test": "react-app-rewired test",
+		"eject": "react-scripts eject",
+		"build:css": "postcss src/css/tailwind.css -o src/css/main.css"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@tailwindcss/forms": "^0.5.6",
+		"@testing-library/dom": "^9.3.1",
+		"autoprefixer": "^10.4.15",
+		"customize-cra": "^1.0.0",
+		"postcss": "^8.4.31",
+		"react-app-rewired": "^2.2.1",
+		"tailwindcss": "^3.3.3"
+	},
+	"resolutions": {
+		"openapi-fetch": "^0.13.8"
+	},
+	"overrides": {
+		"openapi-fetch": "^0.13.8"
+	}
+}
