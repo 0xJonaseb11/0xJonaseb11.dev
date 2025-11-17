@@ -5,7 +5,6 @@ import {
   FiDownload,
   FiLock,
   FiShield,
-  FiLink,
   FiAlertCircle,
   FiExternalLink,
 } from "react-icons/fi";
@@ -211,7 +210,7 @@ const PaidResumeDownload = () => {
           Secure resume access
         </span>
         <span className="font-semibold text-indigo-600 dark:text-indigo-300">
-          {priceLabel}
+          "$"{priceLabel}
         </span>
       </div>
 
@@ -231,7 +230,7 @@ const PaidResumeDownload = () => {
               onClick={openConnectModal}
               className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-indigo-500"
             >
-              <FiLink />
+              <FiExternalLink />
               Connect wallet
             </motion.button>
           )}
