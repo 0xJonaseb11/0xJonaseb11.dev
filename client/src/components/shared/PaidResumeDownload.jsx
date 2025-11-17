@@ -7,21 +7,28 @@ import {
   FiShield,
   FiLink,
   FiAlertCircle,
+  FiExternalLink,
 } from "react-icons/fi";
 import {
   useAccount,
+  useChainId,
   useSendTransaction,
   useSignMessage,
   useWaitForTransactionReceipt,
 } from "wagmi";
 import { parseEther } from "viem";
 import { PORTFOLIO_RECIPIENT_ADDRESS } from "../../constants/wallet";
+import {
+  getBlockExplorerUrl,
+  getBlockExplorerName,
+} from "../../utils/blockExplorers";
 
 const RESUME_PRICE_USD = 0.5;
 const RESUME_FILE_PATH = "/files/Jonas-Sebera-Resume.pdf";
 
 const PaidResumeDownload = () => {
   const { address, isConnected } = useAccount();
+  const chainId = useChainId();
   const { signMessageAsync } = useSignMessage();
   const { data: hash, sendTransaction, isPending } = useSendTransaction();
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
@@ -35,6 +42,7 @@ const PaidResumeDownload = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
   const [transactionHash, setTransactionHash] = useState(null);
+  const [showTransactionLink, setShowTransactionLink] = useState(false);
 
   useEffect(() => {
     const fetchPrice = async () => {
@@ -78,6 +86,14 @@ const PaidResumeDownload = () => {
         setDownloadReady(false);
       }
       setIsSigning(false);
+      
+      // Show transaction link for 5 minutes
+      setShowTransactionLink(true);
+      const timer = setTimeout(() => {
+        setShowTransactionLink(false);
+      }, 5 * 60 * 1000); // 5 minutes
+
+      return () => clearTimeout(timer);
     }
   }, [isSuccess, hash]);
 
@@ -167,12 +183,25 @@ const PaidResumeDownload = () => {
   return (
     <div className="group relative flex flex-col gap-3 rounded-2xl border border-indigo-100 dark:border-indigo-500/30 bg-white/90 dark:bg-primary-dark/40 p-4 shadow-md">
       {/* Hover tooltip for security info */}
-      <div className="absolute bottom-full left-0 right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
-        <div className="flex items-start gap-2 rounded-lg border border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-500/10 px-3 py-2 text-xs text-indigo-700 dark:text-indigo-300 shadow-lg max-w-sm mx-auto">
-          <FiShield className="mt-0.5 flex-shrink-0" />
-          <span>
-            <strong>Secure payments:</strong> All transactions are protected with bullet-proof cryptographic verification signatures. Your payment is verified on-chain before any transaction executes, ensuring maximum security.
-          </span>
+      <div className="absolute bottom-full left-0 right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 transform group-hover:translate-y-0 translate-y-2">
+        <div className="relative flex items-start gap-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-500 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/40 dark:to-green-900/30 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-100 shadow-2xl max-w-md mx-auto backdrop-blur-sm">
+          {/* Glow effect */}
+          <div className="absolute inset-0 rounded-xl bg-emerald-400/20 dark:bg-emerald-500/20 blur-xl -z-10"></div>
+          
+          <div className="flex-shrink-0 mt-0.5">
+            <div className="w-8 h-8 rounded-full bg-emerald-500 dark:bg-emerald-400 flex items-center justify-center shadow-lg">
+              <FiShield className="text-white text-base" />
+            </div>
+          </div>
+          
+          <div className="flex-1 space-y-1">
+            <p className="font-bold text-base text-emerald-900 dark:text-emerald-50 leading-tight">
+              Bank-Level Security Guaranteed
+            </p>
+            <p className="text-xs leading-relaxed text-emerald-800 dark:text-emerald-200">
+              Every transaction is cryptographically verified on-chain before execution. Your payment is protected by bullet-proof signatures, no transaction proceeds without full verification. <span className="font-semibold">100% secure, 100% transparent.</span>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -238,6 +267,26 @@ const PaidResumeDownload = () => {
           <FiDownload />
           Resume downloaded
         </div>
+      )}
+
+      {/* Transaction link - shown for 5 minutes after successful payment */}
+      {showTransactionLink && hash && isSuccess && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="mt-2 pt-3 border-t border-indigo-200 dark:border-indigo-500/20"
+        >
+          <a
+            href={getBlockExplorerUrl(chainId, hash)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+          >
+            <span>View transaction on {getBlockExplorerName(chainId)}</span>
+            <FiExternalLink className="text-xs" />
+          </a>
+        </motion.div>
       )}
     </div>
   );

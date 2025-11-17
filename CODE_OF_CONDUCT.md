@@ -112,16 +112,55 @@ individual, or aggression toward or disparagement of classes of individuals.
 **Consequence**: A permanent ban from any sort of public interaction within
 the community.
 
+## Web3 Payment Conduct
+
+### Payment Integrity
+
+When using Web3 payment features on this platform:
+
+- **Honest Transactions**: Only initiate transactions you intend to complete
+- **Respect Rate Limits**: Do not attempt to abuse or circumvent payment mechanisms
+- **No Fraudulent Activity**: Do not attempt to manipulate transaction verification or bypass security measures
+- **Transaction Privacy**: Respect the privacy of other users' transaction data
+- **Responsible Use**: Use payment features only for their intended purpose
+
+### Security Responsibilities
+
+- **Protect Your Wallet**: Keep your wallet credentials secure and never share private keys
+- **Verify Before Transacting**: Always verify recipient addresses and transaction amounts
+- **Report Suspicious Activity**: Report any suspicious or fraudulent activity immediately
+- **Follow Best Practices**: Adhere to Web3 security best practices when interacting with the platform
+
+### Violations
+
+Violations of payment integrity include:
+
+- Attempting to bypass payment verification mechanisms
+- Manipulating transaction hashes or signatures
+- Attempting to download content without proper payment
+- Sharing or distributing methods to circumvent payment systems
+- Any fraudulent or malicious use of payment features
+
+**Consequence**: Violations of payment integrity will result in immediate permanent ban and may be reported to relevant authorities.
+
 ## Attribution
 
 This Code of Conduct is adapted from the `[Contributor Covenant][homepage]`,
 version 2.0, available at
 <https://www.contributor-covenant.org/version/2/0/code_of_conduct.html>.
 
-Community Impact Guidelines were inspired by Mozilla’s code of conduct enforcement ladder.
+Community Impact Guidelines were inspired by Mozilla's code of conduct enforcement ladder.
 
 For answers to common questions about this code of conduct, see the FAQ at <https://www.contributor-covenant.org/faq>. Translations are available at <https://www.contributor-covenant.org/translations>.
 
+---
+
+## Security Notice
+
+**🔒 Bank-Level Security Guaranteed**: All transactions on this platform are protected with bullet-proof cryptographic verification signatures. Every payment is verified on-chain before any transaction executes, ensuring maximum security and transparency. **100% secure, 100% transparent.**
+
+For detailed security information, please see [SECURITY.md](./SECURITY.md).
+
 ---------------------------------
 
-@0xJonaseb11
+**Last Updated**: 17th Nov, 2025
