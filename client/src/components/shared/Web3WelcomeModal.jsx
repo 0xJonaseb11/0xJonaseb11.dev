@@ -788,15 +788,27 @@ const Web3WelcomeModal = ({ onClose }) => {
             </div>
 
             {/* Footer */}
-            <div className="relative z-10 p-6 border-t border-indigo-500/20 dark:border-indigo-500/20 bg-indigo-500/5 dark:bg-indigo-500/5">
-              <motion.button
-                onClick={onClose}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Explore My Portfolio
-              </motion.button>
+            <div className="relative z-10 p-6 border-t border-indigo-500/20 dark:border-indigo-500/20 bg-indigo-500/5 dark:bg-indigo-500/5 space-y-3">
+              <div className="grid gap-3 sm:grid-cols-2">
+                <motion.a
+                  href="https://github.com/0xJonaseb11"
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-6 py-3 border border-indigo-500/30 rounded-xl text-indigo-600 dark:text-indigo-300 font-semibold text-center transition hover:border-indigo-500/60"
+                >
+                  Explore My GitHub
+                </motion.a>
+                <motion.button
+                  onClick={onClose}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Explore My Portfolio
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         </div>

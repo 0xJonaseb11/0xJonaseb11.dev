@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AppBanner from "../components/shared/AppBanner";
 import CreativeBackground from "../components/shared/CreativeBackground";
@@ -8,6 +9,28 @@ import Doings from "../components/Doings/Doings";
 import Testimonials from "../components/Testimonials/Testimonials";
 
 const Home = () => {
+  useEffect(() => {
+    const handleHashScroll = () => {
+      if (window.location.hash === "#support-my-work") {
+        const target = document.getElementById("support-my-work");
+        if (target) {
+          setTimeout(
+            () =>
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              }),
+            100
+          );
+        }
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener("hashchange", handleHashScroll);
+    return () => window.removeEventListener("hashchange", handleHashScroll);
+  }, []);
+
   return (
     <div className="container mx-auto w-full relative min-h-screen">
       <CreativeBackground />

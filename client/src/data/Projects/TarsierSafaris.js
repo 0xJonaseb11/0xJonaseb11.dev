@@ -1,6 +1,5 @@
 import Socialite from "../../images/Socialite/Socialite.jpg";
 import Italos from "../../images/Italos/Italos.png";
-import tarsierMain from "../../images/TarsierSafaris/TarsierSafaris.png";
 import tarsier1 from "../../images/TarsierSafaris/tarsier1.png";
 import tarsier2 from "../../images/TarsierSafaris/tarsier2.png";
 import tarsier3 from "../../images/TarsierSafaris/tarsier3.png";

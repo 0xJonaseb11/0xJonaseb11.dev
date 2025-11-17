@@ -125,7 +125,7 @@ const AppHeader = () => {
           <Link
             to="/projects"
             onClick={() => setShowMenu(false)}
-            className="block text-left text-lg text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 font-medium transition-colors duration-300"
+            className="block text-left text-lg text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 font-medium transition-colors duration-300"
             aria-label="Projects"
           >
             projects
@@ -133,7 +133,7 @@ const AppHeader = () => {
           <Link
             to="/about"
             onClick={() => setShowMenu(false)}
-            className="block text-left text-lg text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
+            className="block text-left text-lg text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
             aria-label="about me"
           >
             about me
@@ -141,7 +141,7 @@ const AppHeader = () => {
           <Link
             to="/resume"
             onClick={() => setShowMenu(false)}
-            className="block text-left text-lg text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
+            className="block text-left text-lg text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
             aria-label="resume"
           >
             resume
@@ -149,7 +149,7 @@ const AppHeader = () => {
           <Link
             to="/contact"
             onClick={() => setShowMenu(false)}
-            className="block text-left text-[#999] text-lg dark:text-[#999] hover:text-indigo-500 dark:hover:text-indigo-400 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
+            className="block text-left text- text-lg dark:text-[#999] hover:text-indigo-500 dark:hover:text-indigo-400 sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark font-medium transition-colors duration-300"
             aria-label="Contact"
           >
             contact
@@ -160,7 +160,7 @@ const AppHeader = () => {
         <div className="font-general-medium hidden sm:flex items-center gap-4 lg:gap-6">
           <Link
             to="/projects"
-            className="relative block text-sm lg:text-base text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
+            className="relative block text-sm lg:text-base text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
             aria-label="Projects"
           >
             projects
@@ -168,7 +168,7 @@ const AppHeader = () => {
           </Link>
           <Link
             to="/about"
-            className="relative block text-sm lg:text-base text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
+            className="relative block text-sm lg:text-base text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
             aria-label="about me"
           >
             about me
@@ -176,7 +176,7 @@ const AppHeader = () => {
           </Link>
           <Link
             to="/resume"
-            className="relative block text-sm lg:text-base text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
+            className="relative block text-sm lg:text-base text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
             aria-label="resume"
           >
             resume
@@ -184,7 +184,7 @@ const AppHeader = () => {
           </Link>
           <Link
             to="/contact"
-            className="relative block text-sm lg:text-base text-[#999] dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
+            className="relative block text-sm lg:text-base text-slate-500 dark:text-[#999] dark:hover:text-indigo-400 hover:text-indigo-500 py-2 font-medium transition-all duration-300 group whitespace-nowrap"
             aria-label="Contact"
           >
             contact

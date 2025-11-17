@@ -1,6 +1,5 @@
 import StoneProofLabs from "../../images/StoneProofLabs/StoneProofLabs.png";
 import Web3Mates from "../../images/Web3Mates/Web3Mates.png";
-import digicertMain from "../../images/Digicert/Digicert.png";
 import digicert1 from "../../images/Digicert/digicert1.png";
 import digicert2 from "../../images/Digicert/digicert2.png";
 import digicert3 from "../../images/Digicert/digicert3.png";

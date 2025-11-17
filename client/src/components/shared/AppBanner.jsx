@@ -1,125 +1,124 @@
-import { FiArrowDownCircle } from "react-icons/fi";
+import { FiArrowDownCircle, FiEye, FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
-// import { FiArrowRight } from 'react-icons/fi';
-import { FiEye } from "react-icons/fi";
 
 import Welcome from "../contract/ConnectWallet";
+
+const quickStats = [
+  { label: "Years Shipping Software", value: "5+" },
+  { label: "Web3 Deployments", value: "80+" },
+  { label: "Happy Clients", value: "36+" },
+];
 
 const AppBanner = () => {
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.9, delay: 0.2 }}
-      className="flex flex-col items-center lg:flex-row mt-12 md:mt-8 ml-2 relative z-10"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative flex flex-col lg:flex-row gap-12 mt-12 md:mt-10 mb-16 px-4 sm:px-0"
     >
-      <div className="flex flex-col w-full md:w-1/3 text-left 2xsm:p-0 3xsm:p-0 4xsm:p-0">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.1,
-          }}
-          className="3xsm:4xsm:flex-col font-monospace text-base lg:text-3xl xl:text-3xl text-center lg:text-left text-ternary-dark dark:text-primary-light"
-        >
-          Hi there👋, I'm <strong>Jonas Sebera</strong>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.2,
-          }}
-          className="flex flex-col font-general-medium mt-4 text-lg md:text-xl lg:text-2xl xl:text-3xl text-center lg:text-left leading-normal text-gray-500 dark:text-gray-500"
-        >
-          {/* Typing svg */}
-          <a
-            href="https://git.io/typing-svg"
-            onClick={(e) => {
-              e.preventDefault();
-              // alert("Left click is disabled for this link")
-            }}
-            onContextMenu={(e) => {
-              e.preventDefault();
-              // window.alert("Right click context menu is disabled for this link")
-            }}
-            onMouseDown={(e) => {
-              if (e.button === 1) {
-                e.preventDefault();
-                window.alert("403 - Forbidden");
-              }
-            }}
-          >
-            <img
-              src="https://readme-typing-svg.demolab.com?font=&size=24&pause=1000&random=false&width=435&lines=Blockchain+Developer;Web3.0+Application+Developer;Smart+Contract+Developer;Smart+Contract+Auditor;Relational+Databases+Developer"
-              alt="Typing svg"
-            />
-          </a>
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.3,
-          }}
-          className="flex justify-center lg:block 3xsm:block 3xsm:mx-6"
-        >
-          <a
+      <div className="flex-1 space-y-6">
+        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 dark:border-indigo-500/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          Web3 Engineer • Software Craftsman
+        </div>
+
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-center lg:text-left text-ternary-dark dark:text-primary-light">
+          Hi there, I'm{" "}
+          <span className="text-indigo-600 dark:text-indigo-400">Jonas Sebera</span>
+        </h1>
+
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl text-center lg:text-left">
+          I design and ship reliable software ranging from responsive web platforms to secure Web3
+          experiences so teams can move quickly without breaking quality.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <motion.a
             href="../files/Jonas-Sebera-Resume.pdf"
             download="Jonas-Sebera-Resume.pdf"
-            className=" flex flex-col font-general-medium justify-center items-center text-center w-full 2sm:p-4 2sm:text-2xl mt-12 mb-6 sm:mb-3 text-lg py-2.5 sm:py-3 shadow-lg rounded-lg bg-indigo-500 focus:ring-1 hover:bg-indigo-600 text-gray-100 hover:text-white duration-500 p-2 4xsm:-ml-2 -ml-1.5"
-            aria-label="Download quick resume"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
             target="_blank"
             rel="noreferrer"
-            // onclick={(e) => {
-            //   e.preventDefault(); // prevent default anchor behavior
-            //   window.alert("Resume is currently unavailable!!🙏 Mind viewing full resume instead!!🫡");
-            // }}
+            aria-label="Download quick resume"
           >
-            <FiArrowDownCircle className="mr-2 sm:mr-3 h-5 w-5 sn:w-6 sm:h-6 duration-100 items-center text-center" />
-            <span className="text-sm sm:text-lg font-general-medium duration-100 mb-0">
-              Download Quick Resume
-            </span>
-          </a>
+            <FiArrowDownCircle className="text-lg" />
+            Download Resume
+          </motion.a>
 
-          <span className="p-1"></span>
-
-          <a
-            view="Jonas-Sebera-Resume"
+          <motion.a
             href="https://resume.io/r/Cg5tKp0Qh"
             target="_blank"
-            className="flex flex-col font-general-medium justify-center items-center text-center w-full 2sm:p-4 2sm:text-2xl mt-12 mb-6 sm:mb-3 text-lg py-2.5 sm:py-3 shadow-lg rounded-lg bg-indigo-500 focus:ring-1 hover:bg-indigo-600 text-gray-100 hover:text-white duration-500 p-2 -ml-0.5"
-            aria-label="View Resume here"
             rel="noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="flex items-center justify-center gap-2 rounded-xl border border-indigo-200 px-6 py-3 font-semibold text-ternary-dark dark:text-primary-light shadow-sm transition hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
+            aria-label="View resume online"
           >
-            <FiEye className="mr-2 sm:mr-3 h-5 w-5 sn:w-6 sm:h-6 duration-100 items-center text-center" />
-            <span className="text-sm sm:text-lg font-general-medium duration-100 mb-0">
-              View Full Resume
-            </span>
-          </a>
-        </motion.div>
+            <FiEye className="text-lg" />
+            View Full Resume
+          </motion.a>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+          {quickStats.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-5 text-center shadow-sm"
+            >
+              <p className="text-2xl font-bold text-ternary-dark dark:text-primary-light">
+                {item.value}
+              </p>
+              <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <motion.a
+          href="https://github.com/0xJonaseb11"
+          target="_blank"
+          rel="noreferrer"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-5 py-4 shadow-sm transition hover:border-indigo-300 dark:hover:border-indigo-500/60"
+          aria-label="Visit Jonas on GitHub"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-900 text-white">
+            <FiGithub className="text-2xl" />
+          </div>
+          <div>
+            <p className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400">
+              Open Source
+            </p>
+            <p className="text-lg font-semibold text-ternary-dark dark:text-primary-light">
+              github.com/0xJonaseb11
+            </p>
+          </div>
+        </motion.a>
       </div>
-      <motion.div
-        initial={{ opacity: 0, y: -180 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ ease: "easeInOut", duration: 2, delay: 1 }}
-        className="w-full sm:w-2/3 text-right float-right mt-8 sm:mt-0"
-      >
-        <video
-          className="w-11/12  m-2 dark:rounded-full rounded-full border-0"
-          src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/blockchain-technology-4423752-3675973.mp4"
-          autoPlay
-          loop
-          muted
-        ></video>
-        <Welcome />
-      </motion.div>
+
+      <div className="flex-1 flex justify-center">
+        <div className="w-full max-w-xl rounded-3xl border border-gray-100 dark:border-white/10 bg-white/90 dark:bg-primary-dark/60 p-4 shadow-xl backdrop-blur">
+          <div className="rounded-2xl bg-primary-dark/90 dark:bg-black overflow-hidden shadow-inner">
+            <video
+              className="w-full h-auto"
+              src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/blockchain-technology-4423752-3675973.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+          <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+            Focused on dependable blockchain integrations, human-friendly UX, and production-ready
+            software.
+          </p>
+          <Welcome />
+        </div>
+      </div>
     </motion.section>
   );
 };

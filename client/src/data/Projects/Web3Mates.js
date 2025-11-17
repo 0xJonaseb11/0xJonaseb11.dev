@@ -1,6 +1,5 @@
 import TarsierSafaris from "../../images/TarsierSafaris/TarsierSafaris.png";
 import Socialite from "../../images/Socialite/Socialite.jpg";
-import web3matesMain from "../../images/Web3Mates/Web3Mates.png";
 import web3mates1 from "../../images/Web3Mates/web3mates1.png";
 import web3mates2 from "../../images/Web3Mates/web3mates2.png";
 import web3mates3 from "../../images/Web3Mates/web3mates3.png";

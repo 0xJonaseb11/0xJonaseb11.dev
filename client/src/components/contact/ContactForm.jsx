@@ -18,7 +18,10 @@ const ContactForm = () => {
       displayMessage = "Email service temporarily unavailable. Please contact me directly at sebejaz99@gmail.com or try again later.";
     } else if (errorMessage && errorMessage.includes("Gmail_API")) {
       displayMessage = "Email service configuration issue. Please contact me directly at sebejaz99@gmail.com.";
-    } else if (errorMessage && errorMessage.includes("Service not found") || errorMessage.includes("Template not found")) {
+    } else if (
+      errorMessage &&
+      (errorMessage.includes("Service not found") || errorMessage.includes("Template not found"))
+    ) {
       displayMessage = "Email service configuration error. Please contact me directly at sebejaz99@gmail.com.";
     }
     

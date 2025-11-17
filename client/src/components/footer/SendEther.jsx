@@ -14,13 +14,52 @@ import {
   FiAlertCircle,
   FiExternalLink,
   FiCopy,
+  FiAward,
+  FiShare2,
 } from "react-icons/fi";
+import { FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import logoLight from "../../images/Logo.png";
 import {
   getBlockExplorerUrl,
   getBlockExplorerName,
 } from "../../utils/blockExplorers";
 
 const RECIPIENT_ADDRESS = "0xbb6073d4052f7e1178cc3ae8090715cbb8f911d8";
+const MAINNET_CHAIN_IDS = [1, 8453]; // Ethereum & Base
+
+const getSupporterBadgeSvg = (logo) => `
+<svg width="620" height="260" viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="120%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333EA;stop-opacity:1" />
+    </linearGradient>
+    <clipPath id="logoClip">
+      <circle cx="520" cy="120" r="60" />
+    </clipPath>
+  </defs>
+  <rect rx="32" ry="32" width="620" height="260" fill="#050A16"/>
+  <rect rx="30" ry="30" x="12" y="12" width="596" height="236" fill="url(#grad)" opacity="0.18"/>
+  <rect rx="28" ry="28" x="24" y="24" width="572" height="212" fill="none" stroke="#4F46E5" stroke-opacity="0.35"/>
+  ${
+    logo
+      ? `<g>
+          <circle cx="520" cy="120" r="70" fill="rgba(255,255,255,0.08)" />
+          <image href="${logo}" x="460" y="60" width="120" height="120" clip-path="url(#logoClip)" />
+        </g>`
+      : ""
+  }
+  <g>
+    <text x="60" y="86" font-size="18" fill="#A5B4FC" font-family="Poppins, Arial" letter-spacing="6">OFFICIAL SUPPORTER</text>
+    <text x="60" y="138" font-size="50" fill="#FFFFFF" font-family="Poppins, Arial" font-weight="700">Jonas Sebera</text>
+    <text x="60" y="170" font-size="20" fill="#C4B5FD" font-family="Poppins, Arial">Portfolio · 0xJonaseb11 · web3 engineer</text>
+    <text x="60" y="205" font-size="16" fill="#EDE9FE" font-family="Poppins, Arial">
+      Backed with real ETH · Support at 0xjonaseb11.vercel.app
+    </text>
+  </g>
+</svg>
+`;
+const SUPPORT_LANDING_URL = "https://0xjonaseb11.vercel.app";
 
 const SendEther = () => {
   const { address, isConnected } = useAccount();
@@ -31,6 +70,7 @@ const SendEther = () => {
   const [copied, setCopied] = useState(false);
   const [ethPrice, setEthPrice] = useState(null);
   const [usdtPrice, setUsdtPrice] = useState(null);
+  const [badgeDataUrl, setBadgeDataUrl] = useState("");
 
   const {
     data: hash,
@@ -120,7 +160,6 @@ const SendEther = () => {
     if (isConfirmed && !success) {
       setSuccess(true);
       setAmount("");
-      setTimeout(() => setSuccess(false), 10000);
     }
   }, [isConfirmed, success]);
 
@@ -131,12 +170,102 @@ const SendEther = () => {
     }
   }, [sendError, error]);
 
+  useEffect(() => {
+    const loadBadge = async () => {
+      try {
+        const response = await fetch(logoLight);
+        const blob = await response.blob();
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const logoDataUrl = reader.result;
+          const svgString = getSupporterBadgeSvg(
+            typeof logoDataUrl === "string" ? logoDataUrl : ""
+          );
+          setBadgeDataUrl(
+            `data:image/svg+xml;utf8,${encodeURIComponent(svgString)}`
+          );
+        };
+        reader.readAsDataURL(blob);
+      } catch (err) {
+        console.error("Failed to load supporter badge assets:", err);
+        setBadgeDataUrl(
+          `data:image/svg+xml;utf8,${encodeURIComponent(
+            getSupporterBadgeSvg("")
+          )}`
+        );
+      }
+    };
+
+    loadBadge();
+  }, []);
+
   const explorerUrl = hash ? getBlockExplorerUrl(chainId, hash) : null;
   const explorerName = hash ? getBlockExplorerName(chainId) : null;
+
+  const shareCallout =
+    "I just backed Jonas Sebera with real ETH so he can keep shipping legendary Web3 products. Support him too at 0xjonaseb11.vercel.app.";
+  const shareUrlForButtons = explorerUrl || SUPPORT_LANDING_URL;
+
+  const openShareWindow = (shareUrl) =>
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+
+  const handleDownloadBadge = () => {
+    if (!badgeDataUrl) return;
+    const link = document.createElement("a");
+    link.href = badgeDataUrl;
+    link.download = "jonas-supporter-badge.svg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleNativeShare = () => {
+    const nativeText = `${shareCallout}\n${shareUrlForButtons}\nLet's keep empowering builders.`;
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "I backed Jonas Sebera",
+          text: nativeText,
+          url: shareUrlForButtons,
+        })
+        .catch(() => {});
+    } else {
+      openShareWindow(
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          nativeText
+        )}`
+      );
+    }
+  };
+
+  const handleLinkedInShare = () => {
+    const summary = `${shareCallout} Tagging Jonas Sebera (@Jonas Sebera) so more people can jump in.`;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      shareUrlForButtons
+    )}&summary=${encodeURIComponent(summary)}`;
+    openShareWindow(linkedInUrl);
+  };
+
+  const handleXShare = () => {
+    const xText = `${shareCallout} @0xJonaseb11\n${shareUrlForButtons}\n#SupportBuilders #Web3`;
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      xText
+    )}`;
+    openShareWindow(tweetUrl);
+  };
+
+  const handleWhatsappShare = () => {
+    const whatsAppText = `${shareCallout}\n${shareUrlForButtons}\nYou should support him too!`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+      whatsAppText
+    )}`;
+    openShareWindow(whatsappUrl);
+  };
 
   return (
     <div className="w-full mt-6">
       <motion.div
+        id="support-my-work"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -356,6 +485,80 @@ const SendEther = () => {
                         <FiExternalLink className="text-xs" />
                       </a>
                     )}
+                  </div>
+                </motion.div>
+              )}
+
+              {success && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white/70 dark:bg-primary-dark/70 backdrop-blur rounded-xl p-5 border border-green-500/20 space-y-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-full bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
+                      <FiAward className="text-2xl" />
+                    </div>
+                    <div>
+                      <p className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                        Appreciation badge unlocked
+                      </p>
+                      <p className="text-lg font-semibold text-ternary-dark dark:text-primary-light">
+                        You’re officially supporting my work—feel free to show it off!
+                      </p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-indigo-500/20 p-4 bg-white dark:bg-primary-dark/40 flex flex-col sm:flex-row items-center gap-4">
+                    <img
+                      src={badgeDataUrl || logoLight}
+                      alt="Jonas supporter badge"
+                      className="w-full sm:w-56 rounded-md shadow-md"
+                    />
+                    <div className="flex-1 space-y-3 text-center sm:text-left">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
+                        Download or share this badge as a proof of backing my Web3 journey right
+                        from here.
+                      </p>
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        <button
+                          onClick={handleDownloadBadge}
+                          className="flex items-center justify-center gap-2 rounded-xl border border-indigo-500/40 px-4 py-3 font-semibold text-indigo-600 dark:text-indigo-300 hover:border-indigo-500"
+                        >
+                          <FiAward /> Download Badge
+                        </button>
+                        <button
+                          onClick={handleNativeShare}
+                          className="flex items-center justify-center gap-2 rounded-xl bg-indigo-500 px-4 py-3 font-semibold text-white hover:bg-indigo-600"
+                        >
+                          <FiShare2 /> Quick Share
+                        </button>
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                          Share it on your network
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          <button
+                            onClick={handleLinkedInShare}
+                            className="flex items-center gap-2 rounded-full border border-[#0A66C2]/40 px-4 py-2 text-sm font-semibold text-[#0A66C2] hover:border-[#0A66C2]"
+                          >
+                            <FaLinkedinIn /> LinkedIn
+                          </button>
+                          <button
+                            onClick={handleXShare}
+                            className="flex items-center gap-2 rounded-full border border-black/40 px-4 py-2 text-sm font-semibold text-black dark:text-white hover:border-black"
+                          >
+                            <FaTwitter /> X
+                          </button>
+                          <button
+                            onClick={handleWhatsappShare}
+                            className="flex items-center gap-2 rounded-full border border-green-500/40 px-4 py-2 text-sm font-semibold text-green-600 hover:border-green-500"
+                          >
+                            <FaWhatsapp /> WhatsApp
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               )}

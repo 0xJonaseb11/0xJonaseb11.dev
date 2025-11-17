@@ -1,6 +1,5 @@
 import Web3Mates from "../../images/Web3Mates/Web3Mates.png";
 import TarsierSafaris from "../../images/TarsierSafaris/TarsierSafaris.png";
-import stoneProofMain from "../../images/StoneProofLabs/StoneProofLabs.png";
 import stoneProof1 from "../../images/StoneProofLabs/stoneProof1.png";
 import stoneProof2 from "../../images/StoneProofLabs/stoneProof2.png";
 import stoneProof3 from "../../images/StoneProofLabs/stoneProof3.png";
