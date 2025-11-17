@@ -82,14 +82,14 @@
 		"openapi-fetch": "^0.13.8",
 		"nth-check": "^2.1.1",
 		"postcss": "^8.4.35",
-		"webpack-dev-server": "^5.2.2",
+		"glob": "^11.0.0",
 		"fast-redact": "^3.5.0"
 	},
 	"overrides": {
 		"openapi-fetch": "^0.13.8",
 		"nth-check": "^2.1.1",
 		"postcss": "^8.4.35",
-		"webpack-dev-server": "^5.2.2",
+		"glob": "^11.0.0",
 		"fast-redact": "^3.5.0",
 		"css-select": {
 			"nth-check": "^2.1.1"
@@ -105,7 +105,6 @@
 			"postcss": "^8.4.35"
 		},
 		"react-scripts": {
-			"webpack-dev-server": "^5.2.2",
 			"postcss": "^8.4.35"
 		},
 		"postcss-cli": {
@@ -113,6 +112,12 @@
 		},
 		"pino": {
 			"fast-redact": "^3.5.0"
+		},
+		"sucrase": {
+			"glob": "^11.0.0"
+		},
+		"tailwindcss": {
+			"sucrase": "^3.35.0"
 		}
 	}
 }

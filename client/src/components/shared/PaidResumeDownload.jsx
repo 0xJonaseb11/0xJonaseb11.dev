@@ -210,7 +210,7 @@ const PaidResumeDownload = () => {
           Secure resume access
         </span>
         <span className="font-semibold text-indigo-600 dark:text-indigo-300">
-          "$"{priceLabel}
+          {priceLabel}
         </span>
       </div>
 
