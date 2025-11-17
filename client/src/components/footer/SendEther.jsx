@@ -25,7 +25,6 @@ import {
 } from "../../utils/blockExplorers";
 
 const RECIPIENT_ADDRESS = "0xbb6073d4052f7e1178cc3ae8090715cbb8f911d8";
-const MAINNET_CHAIN_IDS = [1, 8453]; // Ethereum & Base
 
 const getSupporterBadgeSvg = (logo) => `
 <svg width="620" height="260" viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">

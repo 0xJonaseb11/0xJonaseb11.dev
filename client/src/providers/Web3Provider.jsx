@@ -1,14 +1,20 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { mainnet, base } from "wagmi/chains";
+import {
+  mainnet,
+  base,
+  polygon,
+  arbitrum,
+  optimism,
+} from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const config = getDefaultConfig({
   appName: "Jonas Sebera Portfolio",
   projectId:
     process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || "default-project-id",
-  chains: [mainnet, base],
+  chains: [mainnet, base, polygon, arbitrum, optimism],
   ssr: true,
 });
 

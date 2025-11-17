@@ -106,7 +106,10 @@ const AppFooter = () => {
           className="w-full mt-16 flex flex-col items-center"
         >
           {/* Enhanced Call-to-Action Section */}
-          <div className="w-full md:w-10/12 lg:w-9/12 xl:w-8/12 relative">
+          <div
+            id="support-my-work"
+            className="w-full md:w-10/12 lg:w-9/12 xl:w-8/12 relative"
+          >
             <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
               {/* Decorative background elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />

@@ -26,9 +26,9 @@ const AboutCounter = () => {
   }, []);
 
   useCountUp({ ref: "experienceCounter", end: 6, duration: 6 });
-  useCountUp({ ref: "githubProjectsCounter", end: 26, duration: 3 });
+  useCountUp({ ref: "githubProjectsCounter", end: 32, duration: 3 });
   useCountUp({ ref: "feedbackCounter", end: 92, duration: 3 });
-  useCountUp({ ref: "projectsCounter", end: 81, duration: 3 });
+  useCountUp({ ref: "projectsCounter", end: 87, duration: 3 });
 
   return (
     <div className="mt-16 sm:mt-24 relative">
