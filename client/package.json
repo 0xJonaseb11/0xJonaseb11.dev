@@ -20,6 +20,7 @@
 		"clipboard-copy": "^4.0.1",
 		"framer-motion": "^10.16.4",
 		"lightgallery": "^2.9.0",
+		"lodash": "^4.17.21",
 		"openapi-fetch": "^0.13.8",
 		"postcss-cli": "^10.1.0",
 		"react": "^18.2.0",
