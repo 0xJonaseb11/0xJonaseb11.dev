@@ -1,37 +1,26 @@
-// Block explorer URLs for different chains
+const explorerConfig = {
+  1: { name: "Etherscan", baseUrl: "https://etherscan.io" },
+  5: { name: "Goerli Etherscan", baseUrl: "https://goerli.etherscan.io" },
+  10: { name: "Optimistic Etherscan", baseUrl: "https://optimistic.etherscan.io" },
+  137: { name: "Polygonscan", baseUrl: "https://polygonscan.com" },
+  8453: { name: "Basescan", baseUrl: "https://basescan.org" },
+  84532: { name: "Base Sepolia Scan", baseUrl: "https://sepolia.basescan.org" },
+  42161: { name: "Arbiscan", baseUrl: "https://arbiscan.io" },
+  11155111: { name: "Sepolia Etherscan", baseUrl: "https://sepolia.etherscan.io" },
+};
+
+const getFallbackExplorer = () => explorerConfig[1];
+
 export const getBlockExplorerUrl = (chainId, txHash) => {
-  const explorers = {
-    // Ethereum Mainnet
-    1: `https://etherscan.io/tx/${txHash}`,
-    // Base Mainnet
-    8453: `https://basescan.org/tx/${txHash}`,
-    // Polygon Mainnet
-    137: `https://polygonscan.com/tx/${txHash}`,
-    // Arbitrum One
-    42161: `https://arbiscan.io/tx/${txHash}`,
-    // Optimism
-    10: `https://optimistic.etherscan.io/tx/${txHash}`,
-  };
-
-  const url = explorers[chainId];
-  if (!url) {
-    // Fallback to Etherscan if chain not recognized
-    console.warn(`Unknown chain ID: ${chainId}, using Etherscan as fallback`);
-    return `https://etherscan.io/tx/${txHash}`;
+  const explorer = explorerConfig[chainId] || getFallbackExplorer();
+  if (!explorerConfig[chainId]) {
+    console.warn(`Unknown chain ID: ${chainId}, falling back to ${explorer.name}`);
   }
-
-  return url;
+  return `${explorer.baseUrl}/tx/${txHash}`;
 };
 
 export const getBlockExplorerName = (chainId) => {
-  const names = {
-    1: "Etherscan",
-    8453: "Basescan",
-    137: "Polygonscan",
-    42161: "Arbiscan",
-    10: "Optimistic Etherscan",
-  };
-
-  return names[chainId] || "Block Explorer";
+  const explorer = explorerConfig[chainId] || getFallbackExplorer();
+  return explorer.name;
 };
 

@@ -4,6 +4,7 @@ import { WagmiProvider } from "wagmi";
 import {
   mainnet,
   base,
+  baseSepolia,
   polygon,
   arbitrum,
   optimism,
@@ -14,7 +15,14 @@ const config = getDefaultConfig({
   appName: "Jonas Sebera Portfolio",
   projectId:
     process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || "default-project-id",
-  chains: [mainnet, base, polygon, arbitrum, optimism],
+  chains: [
+    mainnet,
+    base,
+    baseSepolia, // Temporary: enables Base Sepolia for support testing
+    polygon,
+    arbitrum,
+    optimism,
+  ],
   ssr: true,
 });
 

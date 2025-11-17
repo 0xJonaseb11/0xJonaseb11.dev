@@ -1,7 +1,8 @@
-import { FiArrowDownCircle, FiEye, FiGithub } from "react-icons/fi";
+import { FiEye, FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 import Welcome from "../contract/ConnectWallet";
+import PaidResumeDownload from "./PaidResumeDownload";
 
 const quickStats = [
   { label: "Years Shipping Software", value: "5+" },
@@ -33,20 +34,9 @@ const AppBanner = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <motion.a
-            href="../files/Jonas-Sebera-Resume.pdf"
-            download="Jonas-Sebera-Resume.pdf"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Download quick resume"
-          >
-            <FiArrowDownCircle className="text-lg" />
-            Download Resume
-          </motion.a>
-
+          <div className="w-full sm:w-2/3">
+            <PaidResumeDownload />
+          </div>
           <motion.a
             href="https://resume.io/r/Cg5tKp0Qh"
             target="_blank"

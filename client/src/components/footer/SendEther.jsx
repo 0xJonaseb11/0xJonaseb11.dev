@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   useAccount,
   useChainId,
   useSendTransaction,
   useWaitForTransactionReceipt,
+  useSignMessage,
 } from "wagmi";
 import { parseEther } from "viem";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -18,13 +19,14 @@ import {
   FiShare2,
 } from "react-icons/fi";
 import { FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+import { PORTFOLIO_RECIPIENT_ADDRESS } from "../../constants/wallet";
 import logoLight from "../../images/Logo.png";
 import {
   getBlockExplorerUrl,
   getBlockExplorerName,
 } from "../../utils/blockExplorers";
 
-const RECIPIENT_ADDRESS = "0xbb6073d4052f7e1178cc3ae8090715cbb8f911d8";
 
 const getSupporterBadgeSvg = (logo) => `
 <svg width="620" height="260" viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +61,15 @@ const getSupporterBadgeSvg = (logo) => `
 </svg>
 `;
 const SUPPORT_LANDING_URL = "https://0xjonaseb11.vercel.app";
+const EMAILJS_SERVICE_ID =
+  process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_mk44hmb";
+const EMAILJS_SUPPORT_TEMPLATE_ID =
+  process.env.REACT_APP_EMAILJS_SUPPORT_TEMPLATE_ID || "template_sb5r0yg";
+const EMAILJS_PUBLIC_KEY =
+  process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "VrfkLl3nzSOSIU9MB";
+const EMAILJS_SUPPORTER_TEMPLATE_ID =
+  process.env.REACT_APP_EMAILJS_SUPPORTER_TEMPLATE_ID ||
+  "template_sb5r0yg";
 
 const SendEther = () => {
   const { address, isConnected } = useAccount();
@@ -70,6 +81,40 @@ const SendEther = () => {
   const [ethPrice, setEthPrice] = useState(null);
   const [usdtPrice, setUsdtPrice] = useState(null);
   const [badgeDataUrl, setBadgeDataUrl] = useState("");
+  const [pendingAmount, setPendingAmount] = useState("");
+  const [pendingUsdValue, setPendingUsdValue] = useState(null);
+  const [supporterEmail, setSupporterEmail] = useState("");
+  const [supporterEmailSubmitted, setSupporterEmailSubmitted] = useState(false);
+  const [supporterEmailError, setSupporterEmailError] = useState("");
+  const [supporterEmailLoading, setSupporterEmailLoading] = useState(false);
+  const [isSigningSupport, setIsSigningSupport] = useState(false);
+  const [supportSignature, setSupportSignature] = useState("");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const pendingAmountRef = useRef("");
+  const pendingUsdRef = useRef(null);
+  const supporterEmailRef = useRef("");
+  const lastNotifiedHashRef = useRef(null);
+  const supportSignatureRef = useRef("");
+
+  useEffect(() => {
+    pendingAmountRef.current = pendingAmount;
+  }, [pendingAmount]);
+
+  useEffect(() => {
+    pendingUsdRef.current = pendingUsdValue;
+  }, [pendingUsdValue]);
+
+  useEffect(() => {
+    supporterEmailRef.current = supporterEmail;
+  }, [supporterEmail]);
+
+  useEffect(() => {
+    supportSignatureRef.current = supportSignature;
+  }, [supportSignature]);
+
+  const markHashNotified = (hashValue) => {
+    lastNotifiedHashRef.current = hashValue;
+  };
 
   const {
     data: hash,
@@ -77,6 +122,7 @@ const SendEther = () => {
     isPending: isSending,
     error: sendError,
   } = useSendTransaction();
+  const { signMessageAsync } = useSignMessage();
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -112,7 +158,7 @@ const SendEther = () => {
   }, []);
 
   const copyAddress = () => {
-    navigator.clipboard.writeText(RECIPIENT_ADDRESS);
+    navigator.clipboard.writeText(PORTFOLIO_RECIPIENT_ADDRESS);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -143,10 +189,43 @@ const SendEther = () => {
       return;
     }
 
+    setPendingAmount(amount);
+    setPendingUsdValue(
+      ethPrice ? parseFloat(amount) * ethPrice : null
+    );
+    markHashNotified(null);
+    setSupporterEmail("");
+    setSupporterEmailSubmitted(false);
+    setSupporterEmailError("");
+    setSupporterEmailLoading(false);
+    setSupportSignature("");
+
+    try {
+      setIsSigningSupport(true);
+      const normalizedAmount = parseFloat(amount).toFixed(4);
+      const message = `I authorize sending ${normalizedAmount} ETH from ${
+        address || "my wallet"
+      } to support Jonas Sebera on ${new Date().toUTCString()}.`;
+      const signature = await signMessageAsync({ message });
+      setSupportSignature(signature);
+    } catch (err) {
+      setIsSigningSupport(false);
+      const declined =
+        err?.code === 4001 || err?.message?.toLowerCase().includes("user");
+      setError(
+        declined
+          ? "Signature required before sending. Please approve the request."
+          : err.message || "Unable to capture signature."
+      );
+      return;
+    }
+
+    setIsSigningSupport(false);
+
     try {
       const amountInWei = parseEther(amount);
       sendTransaction({
-        to: RECIPIENT_ADDRESS,
+        to: PORTFOLIO_RECIPIENT_ADDRESS,
         value: amountInWei,
       });
     } catch (err) {
@@ -200,6 +279,70 @@ const SendEther = () => {
 
   const explorerUrl = hash ? getBlockExplorerUrl(chainId, hash) : null;
   const explorerName = hash ? getBlockExplorerName(chainId) : null;
+
+  useEffect(() => {
+    if (!isConfirmed || !hash || !pendingAmountRef.current) return;
+    if (hash === lastNotifiedHashRef.current) return;
+    if (
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_SUPPORT_TEMPLATE_ID ||
+      !EMAILJS_PUBLIC_KEY
+    ) {
+      console.warn(
+        "EmailJS credentials missing; skipping support notification email."
+      );
+      return;
+    }
+
+    const sendNotification = async () => {
+      const ethValue = parseFloat(pendingAmountRef.current);
+      if (!ethValue || Number.isNaN(ethValue)) {
+        return;
+      }
+
+      const usdValue =
+        pendingUsdRef.current ??
+        (ethPrice ? parseFloat((ethValue * ethPrice).toFixed(2)) : null);
+      const usdDisplay = usdValue ? `$${usdValue.toFixed(2)}` : "N/A";
+      const templateParams = {
+        user_name: "Portfolio Support Bot",
+        user_email: "support@0xjonaseb11.dev",
+        subject: `New support received (${ethValue.toFixed(4)} ETH)`,
+        message: `Heads up! ${address || "An anonymous supporter"} just sent ${
+          ethValue.toFixed(4)
+        } ETH (${usdValue ? usdDisplay : "USD value unavailable"}) through your portfolio.`,
+        support_amount_eth: ethValue.toFixed(4),
+        support_amount_usd: usdDisplay,
+        supporter_wallet: address || "Wallet not detected",
+        tx_hash: hash,
+        explorer_link: explorerUrl || SUPPORT_LANDING_URL,
+        supporter_email:
+          supporterEmailRef.current || "Supporter email not provided yet",
+        support_signature:
+          supportSignatureRef.current || "Signature not captured",
+      };
+
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_SUPPORT_TEMPLATE_ID,
+          templateParams,
+          EMAILJS_PUBLIC_KEY
+        );
+        markHashNotified(hash);
+      } catch (err) {
+        console.error("Support notification email failed:", err);
+      }
+    };
+
+    sendNotification();
+  }, [
+    isConfirmed,
+    hash,
+    explorerUrl,
+    address,
+    ethPrice,
+  ]);
 
   const shareCallout =
     "I just backed Jonas Sebera with real ETH so he can keep shipping legendary Web3 products. Support him too at 0xjonaseb11.vercel.app.";
@@ -259,6 +402,74 @@ const SendEther = () => {
       whatsAppText
     )}`;
     openShareWindow(whatsappUrl);
+  };
+
+  const handleSupporterEmailSubmit = async (event) => {
+    event.preventDefault();
+    setSupporterEmailError("");
+
+    if (!success) {
+      setSupporterEmailError(
+        "Complete a support transaction first, then drop your email."
+      );
+      return;
+    }
+
+    if (!supporterEmail || !emailPattern.test(supporterEmail.trim())) {
+      setSupporterEmailError("Please enter a valid email address.");
+      return;
+    }
+
+    if (
+      !EMAILJS_SERVICE_ID ||
+      !EMAILJS_SUPPORTER_TEMPLATE_ID ||
+      !EMAILJS_PUBLIC_KEY
+    ) {
+      setSupporterEmailError(
+        "Email service is offline right now—please reach me directly instead."
+      );
+      return;
+    }
+
+    const ethValue = pendingAmount ? parseFloat(pendingAmount) : null;
+    const usdValue =
+      pendingUsdValue ??
+      (ethPrice && ethValue ? parseFloat((ethValue * ethPrice).toFixed(2)) : null);
+
+    const templateParams = {
+      supporter_email: supporterEmail.trim(),
+      support_amount_eth: ethValue ? ethValue.toFixed(4) : "N/A",
+      support_amount_usd: usdValue ? `$${usdValue.toFixed(2)}` : "N/A",
+      supporter_wallet: address || "Wallet not detected",
+      tx_hash: hash || "Pending hash",
+      explorer_link: explorerUrl || SUPPORT_LANDING_URL,
+      subject: `Supporter email shared by ${
+        address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "supporter"
+      }`,
+      message: `Hello Jonas,\n\n${
+        address || "A supporter"
+      } just left their email (${supporterEmail.trim()}) after tipping ${
+        ethValue ? `${ethValue.toFixed(4)} ETH` : "you"
+      }.\n\nTake a moment to thank them personally and keep the relationship warm!\n\n– Portfolio Support Bot`,
+    };
+
+    try {
+      setSupporterEmailLoading(true);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_SUPPORTER_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      setSupporterEmailSubmitted(true);
+    } catch (err) {
+      console.error("Supporter email capture failed:", err);
+      setSupporterEmailError(
+        "Email service misconfigured—please double-check EmailJS IDs or DM me directly."
+      );
+    } finally {
+      setSupporterEmailLoading(false);
+    }
   };
 
   return (
@@ -416,7 +627,7 @@ const SendEther = () => {
                     </p>
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-sm break-all text-primary-dark dark:text-primary-light">
-                        {RECIPIENT_ADDRESS}
+                        {PORTFOLIO_RECIPIENT_ADDRESS}
                       </span>
                       <motion.button
                         onClick={copyAddress}
@@ -483,6 +694,11 @@ const SendEther = () => {
                         View on {explorerName}
                         <FiExternalLink className="text-xs" />
                       </a>
+                    )}
+                    {supportSignature && (
+                      <p className="text-[11px] text-green-700 dark:text-green-300 mt-1 break-all">
+                        Signature verified: {supportSignature.slice(0, 22)}…
+                      </p>
                     )}
                   </div>
                 </motion.div>
@@ -557,6 +773,52 @@ const SendEther = () => {
                           </button>
                         </div>
                       </div>
+                      <div className="mt-6 w-full">
+                        <p className="text-sm font-semibold text-ternary-dark dark:text-ternary-light mb-2">
+                          Leave your email so I can send a personal thank-you.
+                        </p>
+                        <form
+                          onSubmit={handleSupporterEmailSubmit}
+                          className="flex flex-col sm:flex-row gap-3"
+                        >
+                          <input
+                            type="email"
+                            value={supporterEmail}
+                            onChange={(e) => {
+                              setSupporterEmail(e.target.value);
+                              setSupporterEmailError("");
+                            }}
+                            placeholder="you@email.com"
+                            className="flex-1 px-4 py-3 rounded-xl border border-indigo-500/30 bg-white/80 dark:bg-primary-dark/70 dark:text-primary-light text-primary-dark focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-60"
+                            disabled={supporterEmailSubmitted || supporterEmailLoading}
+                          />
+                          <button
+                            type="submit"
+                            disabled={
+                              supporterEmailSubmitted ||
+                              supporterEmailLoading ||
+                              !supporterEmail
+                            }
+                            className="px-5 py-3 rounded-xl bg-indigo-500 text-white font-semibold hover:bg-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                          >
+                            {supporterEmailSubmitted
+                              ? "Saved"
+                              : supporterEmailLoading
+                              ? "Sending..."
+                              : "Share Email"}
+                          </button>
+                        </form>
+                        {supporterEmailError && (
+                          <p className="mt-2 text-sm text-red-500">
+                            {supporterEmailError}
+                          </p>
+                        )}
+                        {supporterEmailSubmitted && !supporterEmailError && (
+                          <p className="mt-2 text-sm text-green-500">
+                            Got it! I’ll reach out with a proper thank-you soon.
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -565,12 +827,14 @@ const SendEther = () => {
               <motion.button
                 onClick={handleSend}
                 disabled={
+                  isSigningSupport ||
                   isSending ||
                   isConfirming ||
                   !amount ||
                   parseFloat(amount) <= 0
                 }
                 whileHover={
+                  !isSigningSupport &&
                   !isSending &&
                   !isConfirming &&
                   amount &&
@@ -579,6 +843,7 @@ const SendEther = () => {
                     : {}
                 }
                 whileTap={
+                  !isSigningSupport &&
                   !isSending &&
                   !isConfirming &&
                   amount &&
@@ -588,7 +853,20 @@ const SendEther = () => {
                 }
                 className="w-full px-8 py-4 bg-indigo-500 hover:bg-indigo-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold text-lg rounded-xl shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50"
               >
-                {isSending ? (
+                {isSigningSupport ? (
+                  <>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="w-6 h-6 border-3 border-white border-t-transparent rounded-full"
+                    />
+                    <span>Awaiting signature...</span>
+                  </>
+                ) : isSending ? (
                   <>
                     <motion.div
                       animate={{ rotate: 360 }}
