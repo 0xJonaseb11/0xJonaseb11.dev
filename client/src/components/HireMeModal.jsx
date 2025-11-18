@@ -120,7 +120,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
           exit={{ opacity: 0 }}
           className="bg-black bg-opacity-60 backdrop-blur-sm fixed inset-0 w-full h-full"
         />
-        <div
+        <div 
           className="fixed inset-0 flex items-end justify-center p-0 sm:p-4 overflow-y-auto z-[101] pointer-events-none"
           onClick={(e) => e.stopPropagation()}
         >

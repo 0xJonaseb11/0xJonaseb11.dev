@@ -55,12 +55,11 @@ const AppBanner = () => {
             </motion.a>
             <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
               <div className="flex items-start gap-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-500 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/40 dark:to-green-900/30 px-5 py-4 text-xs sm:text-sm font-semibold text-emerald-900 dark:text-emerald-50 shadow-2xl max-w-sm w-64 sm:w-80">
-                <div className="h-10 w-10 rounded-full bg-emerald-500/90 dark:bg-emerald-400 flex items-center justify-center shadow-lg flex-shrink-0">
-                  <FiAlertTriangle className="text-white text-lg" />
+                <div className="w-8 h-8 rounded-full bg-emerald-500 dark:bg-emerald-400 flex items-center justify-center shadow-lg">
+                  <FiAlertTriangle className="text-white text-base" />
                 </div>
                 <p className="leading-relaxed text-left">
-                  This CV is lengthy and unoptimized. For a quick skim, grab the
-                  concise resume download instead.
+                  Caution: this CV is lengthy and unoptimized. For a quick skim, grab the concise resume download instead.
                 </p>
               </div>
             </div>

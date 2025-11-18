@@ -25,29 +25,24 @@ const ProjectRelatedProjects = () => {
         {data.RelatedProject.title}
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-10">
-        {data.RelatedProject.Projects.map((project) => {
-          return (
-            <Link
-              to={`/projects/single-project/${project.id}`}
-              className="flex flex-col gap-[1rem]"
-            >
-              <LazyLoadImage
-                effect="blur"
-                src={project.img}
-                className="rounded-xl cursor-pointer"
-                alt={project.title}
-                key={project.id}
-              />
-              <p className="text-primary-dark dark:text-primary-light font-medium text-lg">
-                {project.title}
-              </p>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
-  );
+			<div className="grid grid-cols-1 sm:grid-cols-4 gap-10">
+				{data.RelatedProject.Projects.map((project) => {
+					return (
+						<Link to={`/projects/single-project/${project.id}`} className='flex flex-col gap-[1rem]'>
+							<LazyLoadImage
+								effect="blur"
+								src={project.img}
+								className="rounded-xl cursor-pointer"
+								alt={project.title}
+								key={project.id}
+							/>
+							<p className='text-primary-dark dark:text-primary-light font-medium text-lg'>{project.title}</p>
+						</Link>
+					);
+				})}
+			</div>
+		</div>
+	);
 };
 
 export default ProjectRelatedProjects;

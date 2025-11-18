@@ -75,9 +75,7 @@ const PaidResumeDownload = () => {
   useEffect(() => {
     if (isSuccess && hash) {
       setTransactionHash(hash);
-      const downloadedTxs = JSON.parse(
-        localStorage.getItem("resume_downloads") || "[]"
-      );
+      const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
       if (!downloadedTxs.includes(hash)) {
         setDownloadReady(true);
       } else {
@@ -85,7 +83,7 @@ const PaidResumeDownload = () => {
         setDownloadReady(false);
       }
       setIsSigning(false);
-
+      
       setShowTransactionLink(true);
       const timer = setTimeout(() => {
         setShowTransactionLink(false);
@@ -151,9 +149,7 @@ const PaidResumeDownload = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
 
-      const downloadedTxs = JSON.parse(
-        localStorage.getItem("resume_downloads") || "[]"
-      );
+      const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
       if (!downloadedTxs.includes(transactionHash)) {
         downloadedTxs.push(transactionHash);
         localStorage.setItem("resume_downloads", JSON.stringify(downloadedTxs));

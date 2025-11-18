@@ -231,9 +231,9 @@ const SendEther = () => {
           setUsdtPrice(prices.tether);
         }
       } catch (err) {
-        console.error("Failed to fetch live prices:", err);
-        setEthPrice((prev) => prev ?? 2500);
-        setUsdtPrice((prev) => prev ?? 1);
+        console.error("Failed to fetch prices:", err);
+        setEthPrice(2500);
+        setUsdtPrice(1);
       }
     };
 
@@ -561,11 +561,11 @@ const SendEther = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative w-full mx-auto sm:max-w-3xl bg-gradient-to-br from-indigo-500/20 via-purple-500/15 to-pink-500/20 dark:from-indigo-500/10 dark:via-purple-500/8 dark:to-pink-500/10 rounded-2xl p-5 sm:p-8 border-2 border-indigo-500/30 dark:border-indigo-400/20 shadow-2xl backdrop-blur-sm overflow-hidden"
+        className="relative bg-gradient-to-br from-indigo-500/20 via-purple-500/15 to-pink-500/20 dark:from-indigo-500/10 dark:via-purple-500/8 dark:to-pink-500/10 rounded-2xl p-6 sm:p-8 border-2 border-indigo-500/30 dark:border-indigo-400/20 shadow-2xl backdrop-blur-sm overflow-hidden"
       >
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-36 h-36 sm:w-64 sm:h-64 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-64 h-32 sm:w-48 sm:h-48 bg-gradient-to-tr from-pink-500/10 to-purple-500/10 rounded-full blur-2xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-tr from-pink-500/10 to-purple-500/10 rounded-full blur-2xl -z-10" />
 
         <div className="relative z-10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">

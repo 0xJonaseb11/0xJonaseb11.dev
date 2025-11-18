@@ -164,7 +164,7 @@ const AboutBackground = () => {
           />
         </motion.div>
       ))}
-      <motion.div
+      <motion.div 
         className="absolute inset-0 bg-gradient-to-b from-secondary-light/30 dark:from-primary-dark/30 via-transparent to-secondary-light/25 dark:to-primary-dark/25"
         animate={{
           opacity: [0.25, 0.4, 0.3],
