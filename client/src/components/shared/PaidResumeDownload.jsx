@@ -21,6 +21,7 @@ import {
   getBlockExplorerUrl,
   getBlockExplorerName,
 } from "../../utils/blockExplorers";
+import { getUsdPrices } from "../../utils/priceService";
 
 const RESUME_PRICE_USD = 0.5;
 const RESUME_FILE_PATH = "/files/Jonas-Sebera-Resume.pdf";
@@ -46,19 +47,17 @@ const PaidResumeDownload = () => {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
-        );
-        const data = await response.json();
-        if (data.ethereum?.usd) {
-          setEthPrice(data.ethereum.usd);
-        } else {
+        const prices = await getUsdPrices(["ethereum"]);
+        if (typeof prices.ethereum !== "number") {
           throw new Error("Missing ETH price");
         }
+        setEthPrice(prices.ethereum);
+        setError("");
       } catch (err) {
         console.error("Failed to fetch ETH price:", err);
+        setEthPrice((prev) => prev ?? 2500);
         setError(
-          "Unable to fetch live ETH price. Please refresh or try again later."
+          "Using a fallback market rate because CoinGecko refused the browser request."
         );
       }
     };
@@ -76,7 +75,9 @@ const PaidResumeDownload = () => {
   useEffect(() => {
     if (isSuccess && hash) {
       setTransactionHash(hash);
-      const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
+      const downloadedTxs = JSON.parse(
+        localStorage.getItem("resume_downloads") || "[]"
+      );
       if (!downloadedTxs.includes(hash)) {
         setDownloadReady(true);
       } else {
@@ -84,7 +85,7 @@ const PaidResumeDownload = () => {
         setDownloadReady(false);
       }
       setIsSigning(false);
-      
+
       setShowTransactionLink(true);
       const timer = setTimeout(() => {
         setShowTransactionLink(false);
@@ -150,12 +151,14 @@ const PaidResumeDownload = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
 
-      const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
+      const downloadedTxs = JSON.parse(
+        localStorage.getItem("resume_downloads") || "[]"
+      );
       if (!downloadedTxs.includes(transactionHash)) {
         downloadedTxs.push(transactionHash);
         localStorage.setItem("resume_downloads", JSON.stringify(downloadedTxs));
       }
-      
+
       setHasDownloaded(true);
       setDownloadReady(false);
     } catch (err) {
@@ -181,19 +184,24 @@ const PaidResumeDownload = () => {
       <div className="absolute bottom-full left-0 right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 transform group-hover:translate-y-0 translate-y-2">
         <div className="relative flex items-start gap-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-500 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/40 dark:to-green-900/30 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-100 shadow-2xl max-w-md mx-auto backdrop-blur-sm">
           <div className="absolute inset-0 rounded-xl bg-emerald-400/20 dark:bg-emerald-500/20 blur-xl -z-10"></div>
-          
+
           <div className="flex-shrink-0 mt-0.5">
             <div className="w-8 h-8 rounded-full bg-emerald-500 dark:bg-emerald-400 flex items-center justify-center shadow-lg">
               <FiShield className="text-white text-base" />
             </div>
           </div>
-          
+
           <div className="flex-1 space-y-1">
             <p className="font-bold text-base text-emerald-900 dark:text-emerald-50 leading-tight">
               Bank-Level Security Guaranteed
             </p>
-            <p className="text-xs leading-relaxed text-emerald-800 dark:text-emerald-200">
-              Every transaction is cryptographically verified on-chain before execution. Your payment is protected by bullet-proof signatures, no transaction proceeds without full verification. <span className="font-semibold">100% secure, 100% transparent.</span>
+            <p className="text-xs font-medium leading-relaxed text-emerald-800 dark:text-emerald-200">
+              Every transaction is cryptographically verified on-chain before
+              execution. Your payment is protected by bullet-proof signatures,
+              no transaction proceeds without full verification.{" "}
+              <span className="font-semibold">
+                100% secure, 100% transparent.
+              </span>
             </p>
           </div>
         </div>
@@ -255,7 +263,7 @@ const PaidResumeDownload = () => {
           {isDownloading ? "Preparing..." : "Download resume"}
         </motion.button>
       )}
-      
+
       {hasDownloaded && (
         <div className="flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-gray-100 dark:bg-gray-800 px-4 py-2.5 text-sm font-semibold text-gray-600 dark:text-gray-400">
           <FiDownload />
@@ -285,4 +293,3 @@ const PaidResumeDownload = () => {
 };
 
 export default PaidResumeDownload;
-

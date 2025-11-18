@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FiX } from "react-icons/fi";
-import { useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import emailjs from '@emailjs/browser';
-import CircularProgress from '@mui/material/CircularProgress';
+import { useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import emailjs from "@emailjs/browser";
+import CircularProgress from "@mui/material/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 
 const selectOptions = [
@@ -27,32 +27,38 @@ const HireMeModal = ({ onClose, onRequest }) => {
 
   const onError = (error) => {
     console.error("Email error:", error);
-    
+
     // Parse error message for better user experience
     let errorMessage = "Message not sent. Please try again.";
-    
+
     // Extract error text from EmailJS error object
-    if (error && typeof error === 'object') {
+    if (error && typeof error === "object") {
       if (error.text) {
         errorMessage = error.text;
       } else if (error.message) {
         errorMessage = error.message;
       }
-    } else if (typeof error === 'string') {
+    } else if (typeof error === "string") {
       errorMessage = error;
     }
-    
+
     // Handle specific EmailJS errors
     if (errorMessage.includes("Invalid grant")) {
-      errorMessage = "Email service temporarily unavailable. Please contact me directly at sebejaz99@gmail.com or try again later.";
+      errorMessage =
+        "Email service temporarily unavailable. Please contact me directly at sebejaz99@gmail.com or try again later.";
     } else if (errorMessage.includes("Gmail_API")) {
-      errorMessage = "Email service configuration issue. Please contact me directly at sebejaz99@gmail.com.";
-    } else if (errorMessage.includes("Service not found") || errorMessage.includes("Template not found")) {
-      errorMessage = "Email service configuration error. Please contact me directly at sebejaz99@gmail.com.";
+      errorMessage =
+        "Email service configuration issue. Please contact me directly at sebejaz99@gmail.com.";
+    } else if (
+      errorMessage.includes("Service not found") ||
+      errorMessage.includes("Template not found")
+    ) {
+      errorMessage =
+        "Email service configuration error. Please contact me directly at sebejaz99@gmail.com.";
     } else if (!errorMessage.includes("Message not sent")) {
       errorMessage = "Message not sent. " + errorMessage;
     }
-    
+
     toast.error(errorMessage, {
       position: "top-center",
       autoClose: 6000,
@@ -71,10 +77,10 @@ const HireMeModal = ({ onClose, onRequest }) => {
     setIsLoading(true);
     emailjs
       .sendForm(
-        'service_mk44hmb',
-        'template_sb5r0yg',
+        "service_mk44hmb",
+        "template_sb5r0yg",
         form.current,
-        'VrfkLl3nzSOSIU9MB'
+        "VrfkLl3nzSOSIU9MB"
       )
       .then(
         (result) => {
@@ -114,7 +120,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
           exit={{ opacity: 0 }}
           className="bg-black bg-opacity-60 backdrop-blur-sm fixed inset-0 w-full h-full"
         />
-        <div 
+        <div
           className="fixed inset-0 flex items-end justify-center p-0 sm:p-4 overflow-y-auto z-[101] pointer-events-none"
           onClick={(e) => e.stopPropagation()}
         >
@@ -138,7 +144,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
                 <FiX className="text-2xl text-primary-dark dark:text-primary-light" />
               </button>
             </div>
-            
+
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
               <form
                 onSubmit={sendEmail}
@@ -146,7 +152,10 @@ const HireMeModal = ({ onClose, onRequest }) => {
                 className="w-full text-left space-y-5"
               >
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2"
+                  >
                     Name
                   </label>
                   <input
@@ -160,9 +169,12 @@ const HireMeModal = ({ onClose, onRequest }) => {
                     disabled={isLoading}
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -176,9 +188,12 @@ const HireMeModal = ({ onClose, onRequest }) => {
                     disabled={isLoading}
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2"
+                  >
                     Project Category
                   </label>
                   <select
@@ -191,7 +206,11 @@ const HireMeModal = ({ onClose, onRequest }) => {
                   >
                     <option value="">Select a category</option>
                     {selectOptions.map((option) => (
-                      <option className="text-normal sm:text-md" key={option} value={option}>
+                      <option
+                        className="text-normal sm:text-md"
+                        key={option}
+                        value={option}
+                      >
                         {option}
                       </option>
                     ))}
@@ -199,7 +218,10 @@ const HireMeModal = ({ onClose, onRequest }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-primary-dark dark:text-primary-light mb-2"
+                  >
                     Project Description
                   </label>
                   <textarea
@@ -245,7 +267,7 @@ const HireMeModal = ({ onClose, onRequest }) => {
           </motion.div>
         </div>
       </motion.div>
-      <ToastContainer 
+      <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}

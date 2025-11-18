@@ -11,7 +11,9 @@ const ProjectInfo = () => {
   if (!data || !data.ProjectInfo) {
     return (
       <div className="mt-14">
-        <p className="text-primary-dark dark:text-primary-light">Project information not found</p>
+        <p className="text-primary-dark dark:text-primary-light">
+          Project information not found
+        </p>
       </div>
     );
   }
@@ -25,7 +27,11 @@ const ProjectInfo = () => {
           </p>
           <ul className="leading-loose">
             {data.ProjectInfo.CompanyInfo.map((info) => {
-              const isLink = info.title === "Website" || info.title === "LinkedIn" || info.title === "Demo Video" || (info.title === "Phone" && info.details.startsWith("tel:"));
+              const isLink =
+                info.title === "Website" ||
+                info.title === "LinkedIn" ||
+                info.title === "Demo Video" ||
+                (info.title === "Phone" && info.details.startsWith("tel:"));
               return (
                 <li
                   className="font-general-regular text-ternary-dark dark:text-ternary-light"
@@ -35,8 +41,14 @@ const ProjectInfo = () => {
                   {isLink ? (
                     <a
                       href={info.details}
-                      target={info.details.startsWith("http") ? "_blank" : undefined}
-                      rel={info.details.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={
+                        info.details.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        info.details.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="hover:underline hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer duration-300"
                       aria-label={`${info.title} link`}
                     >

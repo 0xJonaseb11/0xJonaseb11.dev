@@ -1,13 +1,14 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { FiCoffee, FiHeart, FiZap } from "react-icons/fi";
 import Discord from "../../images/discord.jpeg";
 import X from "../../images/X.png";
 import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa";
-import SendEther from "../footer/SendEther";
 
 import AppFooterCopyright from "./AppFooterCopyright";
+
+const SendEther = lazy(() => import("../footer/SendEther"));
 
 const socialLinks = [
   {
@@ -72,7 +73,7 @@ const socialLinks = [
 
 const AppFooter = () => {
   return (
-    <div className="container mx-auto mt-32">
+    <div className="container mx-auto mt-32 px-4 sm:px-0">
       <div className="font-general-regular flex flex-col justify-center items-center mb-12 sm:mb-28">
         <p className="text-3xl sm:text-4xl text-primary-dark dark:text-primary-light mb-10">
           Let's go social
@@ -106,9 +107,9 @@ const AppFooter = () => {
         >
           <div
             id="support-my-work"
-            className="w-full md:w-10/12 lg:w-9/12 xl:w-8/12 relative"
+            className="w-full -mx-4 sm:mx-0 md:w-11/12 lg:w-9/12 xl:w-8/12 relative"
           >
-            <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-2 sm:p-4 md:p-4 lg:p-8 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />
               <div className="absolute bottom-0 left-0 w-28 h-28 sm:w-40 sm:h-40 bg-purple-500/5 dark:bg-purple-400/5 rounded-full blur-2xl -z-10" />
 
@@ -180,9 +181,17 @@ const AppFooter = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="w-full"
+                  className="w-full max-w-3xl mx-auto"
                 >
-                  <SendEther />
+                  <Suspense
+                    fallback={
+                      <div className="w-full rounded-2xl border border-indigo-100 bg-white/70 dark:bg-primary-dark/40 p-6 text-center text-sm text-indigo-500 dark:text-indigo-200">
+                        Loading support experience...
+                      </div>
+                    }
+                  >
+                    <SendEther />
+                  </Suspense>
                 </motion.div>
               </div>
             </div>

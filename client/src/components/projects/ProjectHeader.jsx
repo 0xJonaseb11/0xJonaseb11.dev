@@ -12,7 +12,9 @@ const ProjectSingleHeader = () => {
   if (!data || !data.ProjectHeader) {
     return (
       <div className="mt-14 sm:mt-20">
-        <p className="text-primary-dark dark:text-primary-light">Project not found</p>
+        <p className="text-primary-dark dark:text-primary-light">
+          Project not found
+        </p>
       </div>
     );
   }

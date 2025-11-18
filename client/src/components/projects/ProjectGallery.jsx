@@ -12,7 +12,9 @@ const ProjectGallery = () => {
   if (!data || !data.ProjectImages) {
     return (
       <div className="mt-12">
-        <p className="text-primary-dark dark:text-primary-light">Project images not found</p>
+        <p className="text-primary-dark dark:text-primary-light">
+          Project images not found
+        </p>
       </div>
     );
   }

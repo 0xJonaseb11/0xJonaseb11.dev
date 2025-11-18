@@ -87,7 +87,10 @@ const ProjectsGrid = () => {
               aria-label="Name"
             />
           </div>
-          <ProjectsFilter selectProject={selectProject} setSelectProject={setSelectProject} />
+          <ProjectsFilter
+            selectProject={selectProject}
+            setSelectProject={setSelectProject}
+          />
         </div>
       </div>
 
