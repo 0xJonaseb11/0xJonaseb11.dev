@@ -26,6 +26,7 @@ import {
   getBlockExplorerUrl,
   getBlockExplorerName,
 } from "../../utils/blockExplorers";
+import { getUsdPrices } from "../../utils/priceService";
 
 
 const getSupporterBadgeSvg = (logo) => `
@@ -70,6 +71,96 @@ const EMAILJS_PUBLIC_KEY =
 const EMAILJS_SUPPORTER_TEMPLATE_ID =
   process.env.REACT_APP_EMAILJS_SUPPORTER_TEMPLATE_ID ||
   "template_sb5r0yg";
+const CHAIN_LABELS = {
+  1: "Ethereum",
+  10: "Optimism",
+  137: "Polygon",
+  8453: "Base",
+  42161: "Arbitrum",
+};
+
+const WalletDetailsPanel = () => (
+  <ConnectButton.Custom>
+    {({
+      account,
+      chain,
+      mounted,
+      openAccountModal,
+      openChainModal,
+    }) => {
+      const ready = mounted;
+      const connected = ready && account && chain;
+      const chainLabel = chain?.id
+        ? CHAIN_LABELS[chain.id] || chain.name || `Chain ID #${chain.id}`
+        : "Select network";
+      const walletAddress = account?.address
+        ? `${account.address.slice(0, 6)}...${account.address.slice(-4)}`
+        : "Connect wallet";
+      const balanceLabel =
+        account?.displayBalance ||
+        (chain?.nativeCurrency?.symbol
+          ? `0 ${chain.nativeCurrency.symbol}`
+          : "0 ETH");
+
+      if (!ready) {
+        return (
+          <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 px-4 py-5 text-sm text-indigo-500 dark:text-indigo-300">
+            Preparing wallet controls…
+          </div>
+        );
+      }
+
+      if (!connected) {
+        return (
+          <button
+            type="button"
+            onClick={openAccountModal}
+            className="w-full rounded-2xl border border-indigo-500/30 bg-indigo-500/10 px-4 py-3 text-sm font-semibold text-indigo-600 hover:bg-indigo-500/20 transition"
+          >
+            Connect wallet to pick a network
+          </button>
+        );
+      }
+
+      return (
+        <div className="grid gap-3 sm:grid-cols-2">
+          <button
+            type="button"
+            onClick={openChainModal}
+            className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 px-4 py-3 text-left hover:border-indigo-500/60 transition"
+          >
+            <p className="text-[11px] uppercase tracking-widest text-indigo-500 dark:text-indigo-300">
+              Network
+            </p>
+            <p className="text-sm font-semibold text-ternary-dark dark:text-primary-light mt-1">
+              {chainLabel}
+            </p>
+            {chain?.id && (
+              <p className="text-[11px] text-indigo-500/70 dark:text-indigo-300/80">
+                Chain ID #{chain.id}
+              </p>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={openAccountModal}
+            className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-primary-dark/70 px-4 py-3 text-left hover:border-indigo-300 dark:hover:border-indigo-500/40 transition"
+          >
+            <p className="text-[11px] uppercase tracking-widest text-gray-500 dark:text-gray-400">
+              Wallet
+            </p>
+            <p className="text-sm font-semibold text-ternary-dark dark:text-primary-light mt-1">
+              {walletAddress}
+            </p>
+            <p className="text-[11px] text-gray-500 dark:text-gray-300">
+              {balanceLabel}
+            </p>
+          </button>
+        </div>
+      );
+    }}
+  </ConnectButton.Custom>
+);
 
 const SendEther = () => {
   const { address, isConnected } = useAccount();
@@ -132,15 +223,12 @@ const SendEther = () => {
   useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=ethereum,tether&vs_currencies=usd"
-        );
-        const data = await response.json();
-        if (data.ethereum?.usd) {
-          setEthPrice(data.ethereum.usd);
+        const prices = await getUsdPrices(["ethereum", "tether"]);
+        if (typeof prices.ethereum === "number") {
+          setEthPrice(prices.ethereum);
         }
-        if (data.tether?.usd) {
-          setUsdtPrice(data.tether.usd);
+        if (typeof prices.tether === "number") {
+          setUsdtPrice(prices.tether);
         }
       } catch (err) {
         console.error("Failed to fetch prices:", err);
@@ -895,7 +983,7 @@ const SendEther = () => {
               </motion.button>
 
               <div className="pt-4 border-t border-indigo-500/20 dark:border-indigo-400/20">
-                <ConnectButton showBalance={true} />
+                <WalletDetailsPanel />
               </div>
             </motion.div>
           )}

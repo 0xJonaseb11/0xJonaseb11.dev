@@ -6,6 +6,7 @@
 [![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react&logoColor=0b1120)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38bdf8?style=flat-square&logo=tailwindcss&logoColor=0b1120)](https://tailwindcss.com/)
 [![RainbowKit](https://img.shields.io/badge/RainbowKit-Connected-7f5af0?style=flat-square&logo=rainbow)](https://www.rainbowkit.com/)
+[![Solidity](https://img.shields.io/badge/Solidity-%5E0.8.20-363636?style=flat-square&logo=solidity&logoColor=white)](https://docs.soliditylang.org/en/v0.8.20/)
 [![GitHub Stars](https://img.shields.io/github/stars/0xJonaseb11/0xJonaseb11.dev?label=Starred&style=flat-square&color=fbbf24)](https://github.com/0xJonaseb11/0xJonaseb11.dev)
 
 ---
@@ -64,7 +65,7 @@ This portfolio integrates Web3 payment functionality with enterprise-grade secur
 - Email: <sebejaz99@gmail.com>
 - [X(formerly Twitter)](https://x.com/0xJonaseb11)
 - [Linkedin](https://linkedin.com/in/jonassebera)
-- Portfolio: [0xJonaseb11.dev](https://0xjonaseb11.vercel.app)
+- [#support-my-work](https://0xjonaseb11.vercel.app/#support-my-work)
 
 ---
 

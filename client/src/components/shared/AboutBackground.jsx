@@ -36,7 +36,8 @@ const AboutBackground = () => {
   const backgroundImages = [
     {
       src: StoneProofLabs,
-      className: "absolute top-16 left-4 w-52 h-36 sm:w-72 sm:h-48 lg:w-96 lg:h-64",
+      className:
+        "absolute top-16 left-4 w-52 h-36 sm:w-72 sm:h-48 lg:w-96 lg:h-64",
       rotate: -18,
       zIndex: 1,
       delay: 0,
@@ -44,7 +45,8 @@ const AboutBackground = () => {
     },
     {
       src: Web3Mates,
-      className: "absolute top-32 right-6 w-56 h-38 sm:w-80 sm:h-52 lg:w-[28rem] lg:h-[18rem]",
+      className:
+        "absolute top-32 right-6 w-56 h-38 sm:w-80 sm:h-52 lg:w-[28rem] lg:h-[18rem]",
       rotate: 22,
       zIndex: 1,
       delay: 0.3,
@@ -52,7 +54,8 @@ const AboutBackground = () => {
     },
     {
       src: Digicert,
-      className: "absolute top-64 left-12 w-48 h-32 sm:w-68 sm:h-44 lg:w-88 lg:h-56",
+      className:
+        "absolute top-64 left-12 w-48 h-32 sm:w-68 sm:h-44 lg:w-88 lg:h-56",
       rotate: 180,
       zIndex: 1,
       delay: 0.6,
@@ -60,7 +63,8 @@ const AboutBackground = () => {
     },
     {
       src: TarsierSafaris,
-      className: "absolute top-[28rem] right-10 w-60 h-40 sm:w-88 sm:h-56 lg:w-[32rem] lg:h-[20rem]",
+      className:
+        "absolute top-[28rem] right-10 w-60 h-40 sm:w-88 sm:h-56 lg:w-[32rem] lg:h-[20rem]",
       rotate: -25,
       zIndex: 1,
       delay: 0.9,
@@ -68,7 +72,8 @@ const AboutBackground = () => {
     },
     {
       src: Socialite,
-      className: "absolute top-[40rem] left-8 w-52 h-36 sm:w-76 sm:h-48 lg:w-[26rem] lg:h-[16rem]",
+      className:
+        "absolute top-[40rem] left-8 w-52 h-36 sm:w-76 sm:h-48 lg:w-[26rem] lg:h-[16rem]",
       rotate: 15,
       zIndex: 1,
       delay: 1.2,
@@ -76,7 +81,8 @@ const AboutBackground = () => {
     },
     {
       src: Italos,
-      className: "absolute top-[52rem] right-12 w-56 h-38 sm:w-84 sm:h-52 lg:w-[30rem] lg:h-[18rem]",
+      className:
+        "absolute top-[52rem] right-12 w-56 h-38 sm:w-84 sm:h-52 lg:w-[30rem] lg:h-[18rem]",
       rotate: 200,
       zIndex: 1,
       delay: 1.5,
@@ -84,7 +90,8 @@ const AboutBackground = () => {
     },
     {
       src: StoneProofLabs,
-      className: "absolute top-[64rem] left-16 w-48 h-32 sm:w-72 sm:h-44 lg:w-[24rem] lg:h-[14rem]",
+      className:
+        "absolute top-[64rem] left-16 w-48 h-32 sm:w-72 sm:h-44 lg:w-[24rem] lg:h-[14rem]",
       rotate: -12,
       zIndex: 1,
       delay: 1.8,
@@ -92,7 +99,8 @@ const AboutBackground = () => {
     },
     {
       src: Web3Mates,
-      className: "absolute top-[76rem] right-8 w-52 h-36 sm:w-80 sm:h-48 lg:w-[28rem] lg:h-[16rem]",
+      className:
+        "absolute top-[76rem] right-8 w-52 h-36 sm:w-80 sm:h-48 lg:w-[28rem] lg:h-[16rem]",
       rotate: 20,
       zIndex: 1,
       delay: 2.1,
@@ -100,7 +108,8 @@ const AboutBackground = () => {
     },
     {
       src: Digicert,
-      className: "absolute top-[88rem] left-10 w-44 h-30 sm:w-68 sm:h-40 lg:w-[22rem] lg:h-[12rem]",
+      className:
+        "absolute top-[88rem] left-10 w-44 h-30 sm:w-68 sm:h-40 lg:w-[22rem] lg:h-[12rem]",
       rotate: 190,
       zIndex: 1,
       delay: 2.4,
@@ -108,7 +117,8 @@ const AboutBackground = () => {
     },
     {
       src: TarsierSafaris,
-      className: "absolute top-[100rem] right-14 w-56 h-38 sm:w-84 sm:h-52 lg:w-[26rem] lg:h-[16rem]",
+      className:
+        "absolute top-[100rem] right-14 w-56 h-38 sm:w-84 sm:h-52 lg:w-[26rem] lg:h-[16rem]",
       rotate: -15,
       zIndex: 1,
       delay: 2.7,
@@ -149,7 +159,7 @@ const AboutBackground = () => {
               transform: `rotate(${image.rotate}deg)`,
             }}
             onError={(e) => {
-              e.target.style.display = 'none';
+              e.target.style.display = "none";
             }}
           />
         </motion.div>
@@ -165,7 +175,7 @@ const AboutBackground = () => {
           repeatType: "reverse",
         }}
       />
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-r from-secondary-light/15 dark:from-primary-dark/15 via-transparent to-secondary-light/15 dark:to-primary-dark/15"
         animate={{
           opacity: [0.1, 0.25, 0.15],
@@ -224,4 +234,3 @@ const AboutBackground = () => {
 };
 
 export default AboutBackground;
-

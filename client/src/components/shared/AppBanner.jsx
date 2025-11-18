@@ -25,12 +25,15 @@ const AppBanner = () => {
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-center lg:text-left text-ternary-dark dark:text-primary-light">
           Hi there, I'm{" "}
-          <span className="text-indigo-600 dark:text-indigo-400">Jonas Sebera</span>
+          <span className="text-indigo-600 dark:text-indigo-400">
+            Jonas Sebera
+          </span>
         </h1>
 
         <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl text-center lg:text-left">
-          I design and ship reliable software ranging from responsive web platforms to secure Web3
-          experiences so teams can move quickly without breaking quality.
+          I design and ship reliable software ranging from responsive web
+          platforms to secure Web3 experiences so teams can move quickly without
+          breaking quality.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-stretch">
@@ -115,8 +118,8 @@ const AppBanner = () => {
             />
           </div>
           <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-            Focused on dependable blockchain integrations, human-friendly UX, and production-ready
-            software.
+            Focused on dependable blockchain integrations, human-friendly UX,
+            and production-ready software.
           </p>
           <Welcome />
         </div>

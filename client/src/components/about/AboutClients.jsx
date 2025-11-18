@@ -35,10 +35,7 @@ const AboutClients = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <AboutClientSingle
-              title={client.title}
-              image={client.img}
-            />
+            <AboutClientSingle title={client.title} image={client.img} />
           </motion.div>
         ))}
       </div>

@@ -14,7 +14,6 @@ import {
 } from "react-icons/fi";
 import { SiEthereum } from "react-icons/si";
 
-// Web3 Facts Database - Advanced Concepts
 const web3Facts = [
   // Zero-Knowledge Proofs
   {
@@ -622,10 +621,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                     }}
                     className="absolute w-16 h-16 bg-indigo-500/20 dark:bg-indigo-500/30 rounded-full blur-xl"
                   />
-                  
-                 
- 
-
                 </div>
                 <div className="flex-1">
                   <motion.h2
@@ -642,7 +637,8 @@ const Web3WelcomeModal = ({ onClose }) => {
                     transition={{ delay: 0.3 }}
                     className="text-sm sm:text-base text-ternary-dark dark:text-ternary-light mb-3 text-center"
                   >
-                    Crafting innovative software solutions and building the future of decentralized applications
+                    Crafting innovative software solutions and building the
+                    future of decentralized applications
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -738,7 +734,9 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.5 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-indigo-500/20"
                 >
-                  <div className="text-2xl font-bold text-indigo-400 dark:text-indigo-400">69</div>
+                  <div className="text-2xl font-bold text-indigo-400 dark:text-indigo-400">
+                    69
+                  </div>
                   <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Web3 Facts
                   </div>
@@ -749,7 +747,9 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.6 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-purple-500/20"
                 >
-                  <div className="text-2xl font-bold text-purple-400 dark:text-purple-400">100%</div>
+                  <div className="text-2xl font-bold text-purple-400 dark:text-purple-400">
+                    100%
+                  </div>
                   <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Blockchain Focus
                   </div>
@@ -760,7 +760,9 @@ const Web3WelcomeModal = ({ onClose }) => {
                   transition={{ delay: 0.7 }}
                   className="text-center p-4 bg-white/5 dark:bg-black/10 rounded-xl backdrop-blur-sm border border-pink-500/20"
                 >
-                  <div className="text-2xl font-bold text-pink-400 dark:text-pink-400">∞</div>
+                  <div className="text-2xl font-bold text-pink-400 dark:text-pink-400">
+                    ∞
+                  </div>
                   <div className="text-xs text-ternary-dark dark:text-ternary-light mt-1">
                     Possibilities
                   </div>

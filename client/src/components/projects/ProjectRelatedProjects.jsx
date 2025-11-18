@@ -1,27 +1,29 @@
-import { useContext } from 'react';
-import SingleProjectContext from '../../context/SingleProjectContext';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Link, useParams } from 'react-router-dom';
+import { useContext } from "react";
+import SingleProjectContext from "../../context/SingleProjectContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link, useParams } from "react-router-dom";
 
 const ProjectRelatedProjects = () => {
-	const { singleProjectData } = useContext(SingleProjectContext);
-	const { id } = useParams();
-	const projectId = parseInt(id, 10);
-	const data = singleProjectData[projectId];
+  const { singleProjectData } = useContext(SingleProjectContext);
+  const { id } = useParams();
+  const projectId = parseInt(id, 10);
+  const data = singleProjectData[projectId];
 
-	if (!data || !data.RelatedProject) {
-		return (
-			<div className="mt-10 pt-10 sm:pt-14 sm:mt-20">
-				<p className="text-primary-dark dark:text-primary-light">Related projects not found</p>
-			</div>
-		);
-	}
+  if (!data || !data.RelatedProject) {
+    return (
+      <div className="mt-10 pt-10 sm:pt-14 sm:mt-20">
+        <p className="text-primary-dark dark:text-primary-light">
+          Related projects not found
+        </p>
+      </div>
+    );
+  }
 
-	return (
-		<div className="mt-10 pt-10 sm:pt-14 sm:mt-20 border-t-2 border-primary-light dark:border-secondary-dark">
-			<p className="font-general-regular text-primary-dark dark:text-primary-light text-3xl font-bold mb-10 sm:mb-14 text-left">
-				{data.RelatedProject.title}
-			</p>
+  return (
+    <div className="mt-10 pt-10 sm:pt-14 sm:mt-20 border-t-2 border-primary-light dark:border-secondary-dark">
+      <p className="font-general-regular text-primary-dark dark:text-primary-light text-3xl font-bold mb-10 sm:mb-14 text-left">
+        {data.RelatedProject.title}
+      </p>
 
 			<div className="grid grid-cols-1 sm:grid-cols-4 gap-10">
 				{data.RelatedProject.Projects.map((project) => {

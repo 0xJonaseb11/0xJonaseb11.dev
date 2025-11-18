@@ -148,7 +148,7 @@ const CreativeBackground = () => {
             }}
             onError={(e) => {
               // Hide broken images gracefully
-              e.target.style.display = 'none';
+              e.target.style.display = "none";
             }}
           />
         </motion.div>
@@ -160,4 +160,3 @@ const CreativeBackground = () => {
 };
 
 export default CreativeBackground;
-
