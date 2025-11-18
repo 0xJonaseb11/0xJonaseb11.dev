@@ -1,4 +1,4 @@
-import { FiEye, FiGithub } from "react-icons/fi";
+import { FiEye, FiGithub, FiAlertTriangle } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 import Welcome from "../contract/ConnectWallet";
@@ -33,22 +33,34 @@ const AppBanner = () => {
           experiences so teams can move quickly without breaking quality.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-stretch">
           <div className="w-full sm:w-2/3">
             <PaidResumeDownload />
           </div>
-          <motion.a
-            href="https://resume.io/r/Cg5tKp0Qh"
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2 rounded-xl border border-indigo-200 px-6 py-3 font-semibold text-ternary-dark dark:text-primary-light shadow-sm transition hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
-            aria-label="View resume online"
-          >
-            <FiEye className="text-lg" />
-            View Full CV
-          </motion.a>
+          <div className="relative group w-full sm:w-auto sm:flex sm:items-center">
+            <motion.a
+              href="https://resume.io/r/Cg5tKp0Qh"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="flex w-full sm:w-auto min-w-[260px] items-center justify-center gap-3 rounded-xl border border-indigo-200 px-10 py-3 text-base font-semibold text-ternary-dark dark:text-primary-light shadow-md transition hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
+              aria-label="View resume online"
+            >
+              <FiEye className="text-lg" />
+              View Full CV
+            </motion.a>
+            <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
+              <div className="flex items-start gap-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-500 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/40 dark:to-green-900/30 px-5 py-4 text-xs sm:text-sm font-semibold text-emerald-900 dark:text-emerald-50 shadow-2xl max-w-sm w-64 sm:w-80">
+                <div className="w-8 h-8 rounded-full bg-emerald-500 dark:bg-emerald-400 flex items-center justify-center shadow-lg">
+                  <FiAlertTriangle className="text-white text-base" />
+                </div>
+                <p className="leading-relaxed text-left">
+                  Caution: this CV is lengthy and unoptimized. For a quick skim, grab the concise resume download instead.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
@@ -73,17 +85,17 @@ const AppBanner = () => {
           rel="noreferrer"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="flex items-center gap-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-5 py-4 shadow-sm transition hover:border-indigo-300 dark:hover:border-indigo-500/60"
+          className="flex w-full flex-col sm:flex-row items-center gap-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 px-5 py-4 shadow-sm transition hover:border-indigo-300 dark:hover:border-indigo-500/60 text-center sm:text-left"
           aria-label="Visit Jonas on GitHub"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-900 text-white">
             <FiGithub className="text-2xl" />
           </div>
-          <div>
-            <p className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col">
+            <p className="text-xs uppercase tracking-[0.35em] text-gray-500 dark:text-gray-400">
               Open Source
             </p>
-            <p className="text-lg font-semibold text-ternary-dark dark:text-primary-light">
+            <p className="text-lg font-semibold text-ternary-dark dark:text-primary-light break-words">
               github.com/0xJonaseb11
             </p>
           </div>

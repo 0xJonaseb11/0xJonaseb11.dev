@@ -44,7 +44,6 @@ const AppHeader = () => {
       className="sticky top-0 w-full z-50 backdrop-blur-xl bg-white/70 dark:bg-primary-dark/70 border-b border-white/20 dark:border-ternary-dark/30 shadow-lg transition-all duration-300"
     >
       <div className="container mx-auto w-full block sm:flex sm:justify-between sm:items-center py-4 sm:py-5 px-4 sm:px-6">
-        {/* Header menu links and small screen hamburger menu */}
         <div className="flex justify-between items-center w-full sm:w-auto px-4 sm:px-0">
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center group">
@@ -77,8 +76,6 @@ const AppHeader = () => {
               )}
             </Link>
           </div>
-
-          {/* Theme switcher small screen */}
           <div
             onClick={() => setTheme(activeTheme)}
             aria-label="Theme Switcher"
@@ -90,8 +87,6 @@ const AppHeader = () => {
               <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
             )}
           </div>
-
-          {/* Small screen hamburger menu */}
           <div className="sm:hidden">
             <button
               onClick={toggleMenu}
@@ -113,8 +108,6 @@ const AppHeader = () => {
             </button>
           </div>
         </div>
-
-        {/* Header links small screen */}
         <div
           className={
             showMenu
@@ -155,8 +148,6 @@ const AppHeader = () => {
             contact
           </Link>
         </div>
-
-        {/* Header links large screen */}
         <div className="font-general-medium hidden sm:flex items-center gap-4 lg:gap-6">
           <Link
             to="/projects"
@@ -191,8 +182,6 @@ const AppHeader = () => {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300" />
           </Link>
         </div>
-
-        {/* Header right section buttons - ALWAYS VISIBLE */}
         <div className="hidden sm:flex items-center gap-2 lg:gap-3 flex-shrink-0">
           <motion.span
             onClick={showHireMeModal}
@@ -203,8 +192,6 @@ const AppHeader = () => {
           >
             <Button title="Delegate a hunt" />
           </motion.span>
-
-          {/* Theme switcher large screen */}
           <motion.div
             onClick={() => setTheme(activeTheme)}
             aria-label="Theme Switcher"
@@ -220,8 +207,6 @@ const AppHeader = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Hire me modal - Rendered via portal outside navbar */}
       {showModal && (
         <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} />
       )}

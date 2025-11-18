@@ -19,7 +19,6 @@ const ProjectInfo = () => {
   return (
     <div className="block sm:flex gap-0 sm:gap-10 mt-14">
       <div className="w-full sm:w-1/3 text-left">
-        {/* Single project client details */}
         <div className="mb-7">
           <p className="font-general-regular text-2xl font-semibold text-secondary-dark dark:text-secondary-light mb-2">
             {data.ProjectInfo.ClientHeading}
@@ -51,8 +50,6 @@ const ProjectInfo = () => {
             })}
           </ul>
         </div>
-
-        {/* Single project objectives */}
         <div className="mb-7">
           <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
             {data.ProjectInfo.ObjectivesHeading}
@@ -61,8 +58,6 @@ const ProjectInfo = () => {
             {data.ProjectInfo.ObjectivesDetails}
           </p>
         </div>
-
-        {/* Single project technologies */}
         <div className="mb-7">
           <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
             {data.ProjectInfo.Technologies[0].title}
@@ -71,8 +66,6 @@ const ProjectInfo = () => {
             {data.ProjectInfo.Technologies[0].techs.join(", ")}
           </p>
         </div>
-
-        {/* Single project social sharing */}
         <div>
           <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
             {data.ProjectInfo.SocialSharingHeading}
@@ -84,8 +77,6 @@ const ProjectInfo = () => {
           </div>
         </div>
       </div>
-
-      {/*  Single project right section */}
       <div className="w-full sm:w-2/3 text-left mt-10 sm:mt-0">
         <p className="font-general-regular text-primary-dark dark:text-primary-light text-2xl font-bold mb-7">
           {data.ProjectInfo.ProjectDetailsHeading}

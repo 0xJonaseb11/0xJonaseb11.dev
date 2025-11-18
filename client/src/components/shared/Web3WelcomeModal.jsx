@@ -585,15 +585,12 @@ const Web3WelcomeModal = ({ onClose }) => {
         className="fixed inset-0 z-[200] transition-all duration-300"
         onClick={onClose}
       >
-        {/* Animated Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="bg-black/10 dark:bg-black/10 backdrop-blur-md fixed inset-0 w-full h-full"
         />
-
-        {/* Modal Content */}
         <div
           className="fixed inset-0 flex items-start justify-center pt-8 sm:pt-12 md:pt-16 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 overflow-y-auto z-[201] pointer-events-none"
           onClick={(e) => e.stopPropagation()}
@@ -606,18 +603,13 @@ const Web3WelcomeModal = ({ onClose }) => {
             className="relative w-full max-w-2xl mt-2 bg-secondary-light dark:bg-primary-dark border-2 border-indigo-500/30 dark:border-indigo-500/30 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Subtle Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-500 rounded-full blur-3xl" />
               <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
             </div>
-
-            {/* Header */}
             <div className="relative z-10 flex items-center justify-between p-6 border-b border-indigo-500/20 dark:border-indigo-500/20">
               <div className="flex items-center gap-4">
-                {/* Welcoming Animated Icon Group */}
                 <div className="relative flex items-center justify-center">
-                  {/* Main welcoming circle with glow */}
                   <motion.div
                     animate={{
                       scale: [1, 1.1, 1],
@@ -674,8 +666,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                 <FiX className="text-2xl" />
               </button>
             </div>
-
-            {/* Fact Content */}
             <div className="relative z-10 p-8">
               {currentFact && (
                 <motion.div
@@ -690,7 +680,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                     colorClasses[currentFact.color]
                   } rounded-2xl p-8 border-2 backdrop-blur-sm`}
                 >
-                  {/* Category Badge */}
                   <div className="flex items-center justify-between mb-6">
                     <motion.div
                       initial={{ scale: 0 }}
@@ -704,8 +693,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                       </span>
                     </motion.div>
                   </div>
-
-                  {/* Title */}
                   <motion.h3
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -714,8 +701,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                   >
                     {currentFact.title}
                   </motion.h3>
-
-                  {/* Fact Text */}
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -726,8 +711,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                   </motion.p>
                 </motion.div>
               )}
-
-              {/* Action Buttons */}
               <div className="flex items-center justify-between gap-4 mt-6">
                 <motion.button
                   onClick={getNextFact}
@@ -748,8 +731,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                   <span>Random</span>
                 </motion.button>
               </div>
-
-              {/* Fun Stats */}
               <div className="mt-8 grid grid-cols-3 gap-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -786,8 +767,6 @@ const Web3WelcomeModal = ({ onClose }) => {
                 </motion.div>
               </div>
             </div>
-
-            {/* Footer */}
             <div className="relative z-10 p-6 border-t border-indigo-500/20 dark:border-indigo-500/20 bg-indigo-500/5 dark:bg-indigo-500/5 space-y-3">
               <div className="grid gap-3 sm:grid-cols-2">
                 <motion.a

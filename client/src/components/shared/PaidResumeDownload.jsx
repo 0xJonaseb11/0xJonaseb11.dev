@@ -76,7 +76,6 @@ const PaidResumeDownload = () => {
   useEffect(() => {
     if (isSuccess && hash) {
       setTransactionHash(hash);
-      // Check if this transaction has already been downloaded
       const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
       if (!downloadedTxs.includes(hash)) {
         setDownloadReady(true);
@@ -86,11 +85,10 @@ const PaidResumeDownload = () => {
       }
       setIsSigning(false);
       
-      // Show transaction link for 5 minutes
       setShowTransactionLink(true);
       const timer = setTimeout(() => {
         setShowTransactionLink(false);
-      }, 5 * 60 * 1000); // 5 minutes
+      }, 5 * 60 * 1000);
 
       return () => clearTimeout(timer);
     }
@@ -152,7 +150,6 @@ const PaidResumeDownload = () => {
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
 
-      // Mark this transaction as downloaded in localStorage
       const downloadedTxs = JSON.parse(localStorage.getItem("resume_downloads") || "[]");
       if (!downloadedTxs.includes(transactionHash)) {
         downloadedTxs.push(transactionHash);
@@ -170,7 +167,7 @@ const PaidResumeDownload = () => {
   };
 
   const priceLabel = resumePriceInEth
-    ? `${RESUME_PRICE_USD.toFixed(2)} USDT • ${resumePriceInEth
+    ? `${RESUME_PRICE_USD.toFixed(2)} USDT ≈ ${resumePriceInEth
         .toFixed(6)
         .replace(/0+$/, "")
         .replace(/\.$/, "")} ETH`
@@ -181,10 +178,8 @@ const PaidResumeDownload = () => {
 
   return (
     <div className="group relative flex flex-col gap-3 rounded-2xl border border-indigo-100 dark:border-indigo-500/30 bg-white/90 dark:bg-primary-dark/40 p-4 shadow-md">
-      {/* Hover tooltip for security info */}
       <div className="absolute bottom-full left-0 right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 transform group-hover:translate-y-0 translate-y-2">
         <div className="relative flex items-start gap-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-500 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-900/40 dark:to-green-900/30 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-100 shadow-2xl max-w-md mx-auto backdrop-blur-sm">
-          {/* Glow effect */}
           <div className="absolute inset-0 rounded-xl bg-emerald-400/20 dark:bg-emerald-500/20 blur-xl -z-10"></div>
           
           <div className="flex-shrink-0 mt-0.5">
@@ -267,8 +262,6 @@ const PaidResumeDownload = () => {
           Resume downloaded
         </div>
       )}
-
-      {/* Transaction link - shown for 5 minutes after successful payment */}
       {showTransactionLink && hash && isSuccess && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}

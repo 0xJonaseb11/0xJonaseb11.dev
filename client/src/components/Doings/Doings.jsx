@@ -63,12 +63,6 @@ const Doings = () => {
             className="service-item bg-secondary-light dark:bg-ternary-dark !shadow-lg hover:!shadow-xl flex 3xsm:gap-[1rem] 3xsm:p-0 4xsm:gap-2"
           >
             <div className="service-icon-box py-1">
-              {/* <img
-                src={service.icon}
-                alt={`${service.title} icon`}
-                width="40"
-                className="min-w-[40px]"
-              /> */}
               <LazyLoadImage
                 src={service.icon}
                 effect="blur"

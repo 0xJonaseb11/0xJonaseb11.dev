@@ -20,7 +20,7 @@ import {
 export const ClientCoach = {
   ProjectHeader: {
     title: "UX & UI Design",
-    publishDate: "march 4, 2021",
+    publishDate: "march 4, 2023",
     tags: "User Interface Design",
   },
   ProjectImages: [
@@ -52,11 +52,6 @@ export const ClientCoach = {
         id: 2,
         title: "Services",
         details: "UI Design",
-      },
-      {
-        id: 3,
-        title: "Phone",
-        details: "tel:+250 795 107 436",
       },
     ],
     ObjectivesHeading: "Objective",

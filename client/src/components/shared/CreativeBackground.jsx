@@ -153,8 +153,6 @@ const CreativeBackground = () => {
           />
         </motion.div>
       ))}
-      
-      {/* Gradient overlays for depth - minimal to show images better */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary-light/30 dark:from-primary-dark/30 via-transparent to-secondary-light/20 dark:to-primary-dark/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-secondary-light/15 dark:from-primary-dark/15 via-transparent to-secondary-light/15 dark:to-primary-dark/15" />
     </div>

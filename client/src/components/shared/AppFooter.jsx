@@ -73,7 +73,6 @@ const socialLinks = [
 const AppFooter = () => {
   return (
     <div className="container mx-auto mt-32">
-      {/* Footer social links */}
       <div className="font-general-regular flex flex-col justify-center items-center mb-12 sm:mb-28">
         <p className="text-3xl sm:text-4xl text-primary-dark dark:text-primary-light mb-10">
           Let's go social
@@ -105,18 +104,15 @@ const AppFooter = () => {
           transition={{ duration: 0.6 }}
           className="w-full mt-16 flex flex-col items-center"
         >
-          {/* Enhanced Call-to-Action Section */}
           <div
             id="support-my-work"
             className="w-full md:w-10/12 lg:w-9/12 xl:w-8/12 relative"
           >
-            <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
-              {/* Decorative background elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/5 dark:bg-purple-400/5 rounded-full blur-2xl -z-10" />
+            <div className="relative bg-white/80 dark:bg-primary-dark/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 border-2 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <div className="absolute top-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-full blur-2xl -z-10" />
+              <div className="absolute bottom-0 left-0 w-28 h-28 sm:w-40 sm:h-40 bg-purple-500/5 dark:bg-purple-400/5 rounded-full blur-2xl -z-10" />
 
               <div className="relative z-10">
-                {/* Main heading */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -174,15 +170,11 @@ const AppFooter = () => {
                     building amazing blockchain solutions.
                   </p>
                 </motion.div>
-
-                {/* Divider */}
                 <div className="flex items-center justify-center gap-4 my-8">
                   <div className="h-px bg-indigo-500/20 dark:bg-indigo-400/20 flex-1 max-w-20" />
                   <div className="w-2 h-2 rounded-full bg-indigo-500 dark:bg-indigo-400" />
                   <div className="h-px bg-indigo-500/20 dark:bg-indigo-400/20 flex-1 max-w-20" />
                 </div>
-
-                {/* Web3 Send Ether Component */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

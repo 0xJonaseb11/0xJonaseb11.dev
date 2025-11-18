@@ -57,11 +57,6 @@ export const Socialite = {
         title: "Website",
         details: "https://socialiteinc.vercel.app/",
       },
-      {
-        id: 4,
-        title: "Phone",
-        details: "tel:+250 798 223 860",
-      },
     ],
     ObjectivesHeading: "Objective",
     ObjectivesDetails:

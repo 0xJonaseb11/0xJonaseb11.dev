@@ -196,7 +196,6 @@ const Resume = () => {
           }}
           className="mt-5"
         >
-          {/* Tarsier Safaris Ltd - Software Engineer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -225,8 +224,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Web3 Mates - Senior Technical Support Engineer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -254,8 +251,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Web3 Mates - Lead Blockchain Developer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -283,8 +278,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Stone.proof Labs - CEO && Co-Founder */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -313,8 +306,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Stone.proof Labs - Lead Blockchain Developer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -342,8 +333,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Blockify Technologies - Blockchain Developer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />
@@ -375,8 +364,6 @@ const Resume = () => {
               </li>
             </TimelineContent>
           </TimelineItem>
-
-          {/* Italos - Frontend Developer */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot />

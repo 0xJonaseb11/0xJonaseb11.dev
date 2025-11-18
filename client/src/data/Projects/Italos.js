@@ -19,7 +19,7 @@ import {
 export const Italos = {
   ProjectHeader: {
     title: "Project Management UI",
-    publishDate: "Jul 26, 2021",
+    publishDate: "Jul 26, 2023",
     tags: "UI / Frontend",
   },
   ProjectImages: [
@@ -55,12 +55,7 @@ export const Italos = {
       {
         id: 3,
         title: "Website",
-        details: "https://t-tas.italos.cloud/",
-      },
-      {
-        id: 4,
-        title: "Phone",
-        details: "tel:+250 798 223 860",
+        details: "https://italos.vercel.app/",
       },
     ],
     ObjectivesHeading: "Objective",

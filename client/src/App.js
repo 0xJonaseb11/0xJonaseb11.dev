@@ -68,8 +68,6 @@ function App() {
               <AppFooter />
             </Router>
             <UseScrollToTop />
-            
-            {/* Web3 Welcome Modal */}
             {showWelcomeModal && (
               <Web3WelcomeModal onClose={handleCloseWelcome} />
             )}

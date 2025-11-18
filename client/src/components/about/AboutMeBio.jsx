@@ -20,7 +20,6 @@ const AboutMeBio = () => {
 
   return (
     <div className="block lg:flex lg:gap-12 mt-10 sm:mt-16 mb-16">
-      {/* Profile Image Section */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -43,13 +42,10 @@ const AboutMeBio = () => {
               animation="wave"
             />
           )}
-          {/* Decorative elements */}
           <div className="absolute -top-4 -right-4 w-24 h-24 bg-indigo-500/10 dark:bg-indigo-400/10 rounded-full blur-2xl -z-10" />
           <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-2xl -z-10" />
         </div>
       </motion.div>
-
-      {/* Bio Content Section */}
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}

@@ -154,8 +154,6 @@ const AboutBackground = () => {
           />
         </motion.div>
       ))}
-      
-      {/* Animated gradient overlays - Lighter to show images better */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-b from-secondary-light/30 dark:from-primary-dark/30 via-transparent to-secondary-light/25 dark:to-primary-dark/25"
         animate={{
@@ -178,8 +176,6 @@ const AboutBackground = () => {
           repeatType: "reverse",
         }}
       />
-      
-      {/* Floating particles effect - More visible */}
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={`particle-${i}`}
@@ -202,8 +198,6 @@ const AboutBackground = () => {
           }}
         />
       ))}
-      
-      {/* Additional decorative shapes */}
       {[...Array(4)].map((_, i) => (
         <motion.div
           key={`shape-${i}`}
