@@ -27,12 +27,6 @@ const ProjectRelatedProjects = () => {
 				{data.RelatedProject.Projects.map((project) => {
 					return (
 						<Link to={`/projects/single-project/${project.id}`} className='flex flex-col gap-[1rem]'>
-							{/* <img
-								src={project.img}
-								className="rounded-xl cursor-pointer"
-								alt={project.title}
-								key={project.id}
-							/> */}
 							<LazyLoadImage
 								effect="blur"
 								src={project.img}

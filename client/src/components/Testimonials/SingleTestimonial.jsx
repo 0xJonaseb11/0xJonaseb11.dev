@@ -18,7 +18,6 @@ const SingleTestimonial = ({
     <div className="md:max-w-sm w-full lg:max-w-full rounded-lg overflow-hidden lg:flex dark:bg-ternary-dark bg-white shadow-lg hover:shadow-xl">
       <div className="border-gray-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="flex items-center">
-          {/* <img className="w-12 h-12 rounded-full mr-4" src={image} alt={name} /> */}
           <LazyLoadImage
             alt={name}
             effect="blur"

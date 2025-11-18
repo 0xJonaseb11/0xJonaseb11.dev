@@ -10,8 +10,6 @@ const About = () => {
     <AboutMeProvider>
       <div className="relative min-h-screen">
         <AboutBackground />
-        
-        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,8 +33,6 @@ const About = () => {
             Crafting innovative web3.0 solutions with passion and precision
           </motion.p>
         </motion.div>
-
-        {/* Bio Section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -55,8 +51,6 @@ const About = () => {
         >
           <AboutCounter />
         </motion.div>
-
-        {/* Clients Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

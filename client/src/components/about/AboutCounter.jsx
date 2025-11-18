@@ -32,7 +32,6 @@ const AboutCounter = () => {
 
   return (
     <div className="mt-16 sm:mt-24 relative">
-      {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 dark:from-indigo-500/5 dark:via-purple-500/5 dark:to-pink-500/5" />
       <div className="relative backdrop-blur-sm bg-white/40 dark:bg-primary-dark/40 border-y border-white/20 dark:border-ternary-dark/20">
         <div className="font-general-medium container mx-auto py-16 sm:py-20">

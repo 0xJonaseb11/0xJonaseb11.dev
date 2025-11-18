@@ -108,15 +108,12 @@ const HireMeModal = ({ onClose, onRequest }) => {
         className="font-general-medium fixed inset-0 z-[100] transition-all duration-300"
         onClick={onClose}
       >
-        {/* Modal Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="bg-black bg-opacity-60 backdrop-blur-sm fixed inset-0 w-full h-full"
         />
-
-        {/* Modal Content - Slides up from bottom */}
         <div 
           className="fixed inset-0 flex items-end justify-center p-0 sm:p-4 overflow-y-auto z-[101] pointer-events-none"
           onClick={(e) => e.stopPropagation()}

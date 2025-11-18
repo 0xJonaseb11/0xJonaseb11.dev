@@ -52,11 +52,6 @@ export const BigincEcommerce = {
         title: "Services",
         details: "UI Design & Fullstack Development",
       },
-      {
-        id: 3,
-        title: "Phone",
-        details: "tel:+250 798 223 860",
-      },
     ],
     ObjectivesHeading: "Objective",
     ObjectivesDetails:

@@ -16,11 +16,6 @@ const ProjectSingle = ({ title, category, image, id }) => {
       <Link to={`/projects/single-project/${id}`} aria-label="Single Project">
         <div className="rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light dark:bg-ternary-dark">
           <div>
-            {/* <img
-							src={image}
-							className="rounded-t-xl border-none"
-							alt="Single Project"
-						/> */}
             <LazyLoadImage
               src={image}
               alt="Single Project"
