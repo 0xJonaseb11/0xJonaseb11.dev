@@ -28,7 +28,6 @@ import {
 } from "../../utils/blockExplorers";
 import { getUsdPrices } from "../../utils/priceService";
 
-
 const getSupporterBadgeSvg = (logo) => `
 <svg width="620" height="260" viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -69,8 +68,7 @@ const EMAILJS_SUPPORT_TEMPLATE_ID =
 const EMAILJS_PUBLIC_KEY =
   process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "VrfkLl3nzSOSIU9MB";
 const EMAILJS_SUPPORTER_TEMPLATE_ID =
-  process.env.REACT_APP_EMAILJS_SUPPORTER_TEMPLATE_ID ||
-  "template_sb5r0yg";
+  process.env.REACT_APP_EMAILJS_SUPPORTER_TEMPLATE_ID || "template_sb5r0yg";
 const CHAIN_LABELS = {
   1: "Ethereum",
   10: "Optimism",
@@ -81,13 +79,7 @@ const CHAIN_LABELS = {
 
 const WalletDetailsPanel = () => (
   <ConnectButton.Custom>
-    {({
-      account,
-      chain,
-      mounted,
-      openAccountModal,
-      openChainModal,
-    }) => {
+    {({ account, chain, mounted, openAccountModal, openChainModal }) => {
       const ready = mounted;
       const connected = ready && account && chain;
       const chainLabel = chain?.id
@@ -274,9 +266,7 @@ const SendEther = () => {
     }
 
     setPendingAmount(amount);
-    setPendingUsdValue(
-      ethPrice ? parseFloat(amount) * ethPrice : null
-    );
+    setPendingUsdValue(ethPrice ? parseFloat(amount) * ethPrice : null);
     markHashNotified(null);
     setSupporterEmail("");
     setSupporterEmailSubmitted(false);
@@ -390,9 +380,11 @@ const SendEther = () => {
         user_name: "Portfolio Support Bot",
         user_email: "support@0xjonaseb11.dev",
         subject: `New support received (${ethValue.toFixed(4)} ETH)`,
-        message: `Heads up! ${address || "An anonymous supporter"} just sent ${
-          ethValue.toFixed(4)
-        } ETH (${usdValue ? usdDisplay : "USD value unavailable"}) through your portfolio.`,
+        message: `Heads up! ${
+          address || "An anonymous supporter"
+        } just sent ${ethValue.toFixed(4)} ETH (${
+          usdValue ? usdDisplay : "USD value unavailable"
+        }) through your portfolio.`,
         support_amount_eth: ethValue.toFixed(4),
         support_amount_usd: usdDisplay,
         supporter_wallet: address || "Wallet not detected",
@@ -418,13 +410,7 @@ const SendEther = () => {
     };
 
     sendNotification();
-  }, [
-    isConfirmed,
-    hash,
-    explorerUrl,
-    address,
-    ethPrice,
-  ]);
+  }, [isConfirmed, hash, explorerUrl, address, ethPrice]);
 
   const shareCallout =
     "I just backed Jonas Sebera with real ETH so he can keep shipping legendary Web3 products. Support him too at 0xjonaseb11.vercel.app.";
@@ -516,7 +502,9 @@ const SendEther = () => {
     const ethValue = pendingAmount ? parseFloat(pendingAmount) : null;
     const usdValue =
       pendingUsdValue ??
-      (ethPrice && ethValue ? parseFloat((ethValue * ethPrice).toFixed(2)) : null);
+      (ethPrice && ethValue
+        ? parseFloat((ethValue * ethPrice).toFixed(2))
+        : null);
 
     const templateParams = {
       supporter_email: supporterEmail.trim(),
@@ -801,7 +789,8 @@ const SendEther = () => {
                         Appreciation badge unlocked
                       </p>
                       <p className="text-lg font-semibold text-ternary-dark dark:text-primary-light">
-                        You’re officially supporting my work—feel free to show it off!
+                        You’re officially supporting my work—feel free to show
+                        it off!
                       </p>
                     </div>
                   </div>
@@ -813,8 +802,8 @@ const SendEther = () => {
                     />
                     <div className="flex-1 space-y-3 text-center sm:text-left">
                       <p className="text-sm text-gray-600 dark:text-gray-300">
-                        Download or share this badge as a proof of backing my Web3 journey right
-                        from here.
+                        Download or share this badge as a proof of backing my
+                        Web3 journey right from here.
                       </p>
                       <div className="grid sm:grid-cols-2 gap-3">
                         <button
@@ -872,7 +861,9 @@ const SendEther = () => {
                             }}
                             placeholder="you@email.com"
                             className="flex-1 px-4 py-3 rounded-xl border border-indigo-500/30 bg-white/80 dark:bg-primary-dark/70 dark:text-primary-light text-primary-dark focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 disabled:opacity-60"
-                            disabled={supporterEmailSubmitted || supporterEmailLoading}
+                            disabled={
+                              supporterEmailSubmitted || supporterEmailLoading
+                            }
                           />
                           <button
                             type="submit"
