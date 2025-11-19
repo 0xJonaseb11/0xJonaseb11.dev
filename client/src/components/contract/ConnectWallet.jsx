@@ -1,13 +1,32 @@
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { FiAlertTriangle } from "react-icons/fi";
 import Web3 from "web3";
 import WelcomeContract from "./Welcome.json";
+
+const WalletWarningToast = () => (
+  <div className="wallet-toast__content">
+    <span className="wallet-toast__icon" aria-hidden="true">
+      <FiAlertTriangle />
+    </span>
+    <div className="wallet-toast__copy">
+      <p className="wallet-toast__title">Non-Ethereum browser detected!</p>
+      <p className="wallet-toast__subtitle">
+        Please install or enable an EVM wallet to have a smooth experience!
+      </p>
+    </div>
+  </div>
+);
 
 function Welcome() {
   useEffect(() => {
     const initWeb3 = async () => {
       if (!window.ethereum) {
         console.error("MetaMask not detected.");
-        window.alert("Non-ethereum browser detected.. Consider installing Metamask Wallet!!");
+        toast.error(<WalletWarningToast />, {
+          toastId: "no-wallet-detected",
+          icon: false,
+        });
         return;
       }
 

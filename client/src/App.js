@@ -1,7 +1,9 @@
 import { AnimatePresence } from "framer-motion";
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { ToastContainer } from "react-toastify";
+import { FiX } from "react-icons/fi";
 import ScrollToTop from "./components/ScrollToTop";
 import AppFooter from "./components/shared/AppFooter";
 import AppHeader from "./components/shared/AppHeader";
@@ -73,6 +75,27 @@ function App() {
               <Web3WelcomeModal onClose={handleCloseWelcome} />
             )}
             <Analytics />
+            <ToastContainer
+              position="top-center"
+              autoClose={4800}
+              closeOnClick
+              pauseOnHover
+              newestOnTop
+              draggable={false}
+              toastClassName={() => "wallet-toast"}
+              bodyClassName={() => "wallet-toast__body"}
+              progressClassName="wallet-toast__progress"
+              closeButton={({ closeToast }) => (
+                <button
+                  type="button"
+                  className="wallet-toast__close"
+                  onClick={closeToast}
+                  aria-label="Dismiss notification"
+                >
+                  <FiX />
+                </button>
+              )}
+            />
           </div>
         </Suspense>
       </AnimatePresence>
